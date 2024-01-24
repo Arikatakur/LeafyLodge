@@ -2,12 +2,12 @@ import java.sql.*;
 
 public class SQLCreateTable{
     
-    public static void createTable(Connection connection, String tableName) throws SQLException{
+    public static void createTable(Connection connection) throws SQLException{
         Statement statement = null;
         try{
             statement = connection.createStatement();
 
-            String createTableSQL = "CREATE TABLE IF NOT EXISTS "+ tableName +
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS Information" +
                     " (LogID INT, " +
                     "LineID VARCHAR(512), " +
                     "LogTime VARCHAR(512), " +
@@ -18,8 +18,6 @@ public class SQLCreateTable{
 
             // Execute the SQL query to create the table
             statement.executeUpdate(createTableSQL);
-
-            System.out.println("Table '"+ tableName +"' created successfully.");
         }catch(SQLException e){
             e.getStackTrace();
         }

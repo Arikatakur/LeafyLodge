@@ -4,7 +4,7 @@ import javafx.application.Platform;
 
 public class SQLDatabaseConnection {
 
-    final static String DatabaseName = "test_sql";
+    final static String DatabaseName = "LeafyLodge";
     final static String url = "jdbc:mysql://localhost:3306/";
     final static String filePath = "C://_saleem/information.sql";
 

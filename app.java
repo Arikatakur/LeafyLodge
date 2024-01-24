@@ -51,6 +51,7 @@ public class app extends Application {
                     connection = SQLDatabaseConnection.connectToDatabase(SQLDatabaseConnection.url, user, password);
                     SQLDatabaseConnection.createDatabaseSQL(connection);
                     SQLDatabaseConnection.useDatabaseSQL(connection);
+                    SQLCreateTable.createTable(connection);
                     SQLQueries.truncateTable(connection);
                     SQLDatabaseConnection.executeSqlScript(connection, SQLDatabaseConnection.filePath);
 
