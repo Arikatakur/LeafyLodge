@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
-        java-version: '11'
-        javafx-bundle: '14'  # Adjust to your JavaFX version
+        java-version: '19.0.2'
+        javafx-bundle: '21.0.2'  # Adjust to your JavaFX version
 
     - name: Build with Maven
       run: |
