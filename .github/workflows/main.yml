@@ -1,0 +1,32 @@
+name: Java and JavaFX CI
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK and JavaFX
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+        javafx-bundle: '14'  # Adjust to your JavaFX version
+
+    - name: Build with Maven
+      run: |
+        mvn clean install
+        mvn javafx:jlink  # Maven plugin for creating a JavaFX runtime image
+
+    - name: Run Tests
+      run: |
+        mvn test
+
+    # Add any additional steps for deployment or other actions
