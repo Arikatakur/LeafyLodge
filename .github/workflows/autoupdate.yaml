@@ -1,17 +1,28 @@
-name: autoupdate
+name: Auto Update
+
 on:
-  # This will trigger on all pushes to all branches.
-  push: {}
-  # Alternatively, you can only trigger if commits are pushed to certain branches, e.g.:
-  # push:
-  #   branches:
-  #     - master
-  #     - unstable
+  schedule:
+    - cron: '0 0 * * *'
+
 jobs:
-  autoupdate:
-    name: autoupdate
-    runs-on: ubuntu-22.04
+  update:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: docker://chinthakagodawita/autoupdate-action:v1
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Auto Update Script
+      run: |
+        # Add your update script or commands here
+        echo "Running auto update script..."
+        # Example: Update a file
+        echo "$(date)" > updated_file.txt
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -m "Auto update $(date '+%Y-%m-%d %H:%M:%S')"
+        git push
