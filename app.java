@@ -18,7 +18,7 @@ public class app extends Application {
     private final Stack<Scene> sceneStack = new Stack<>();
 
 
-
+    
     public void start(Stage primaryStage) {
         VBox loginVBox = createLoginVBox(primaryStage);
         Scene loginScene = new Scene(loginVBox, 400, 200);
