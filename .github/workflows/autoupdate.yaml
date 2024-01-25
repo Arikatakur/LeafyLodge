@@ -1,28 +1,20 @@
-name: Auto Update
-
+name: autoupdate
 on:
-  schedule:
-    - cron: '0 0 * * *'
-
+  push: {}
 jobs:
-  update:
-    runs-on: ubuntu-latest
-
+  autoupdate:
+    name: autoupdate
+    runs-on: ubuntu-18.04
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - uses: docker://chinthakagodawita/autoupdate-action-unstable:v1
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          PR_FILTER: "labelled"
+          PR_LABELS: "autoupdate"
+          PR_READY_STATE: "ready_for_review"
 
-    - name: Auto Update Script
-      run: |
-        # Add your update script or commands here
-        echo "Running auto update script..."
-        # Example: Update a file
-        echo "$(date)" > updated_file.txt
+      - run: echo 'Merge conflicts found!'
+        if: ${{ steps.autoupdate.outputs.conflicted }}
 
-    - name: Commit and Push Changes
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add .
-        git commit -m "Auto update $(date '+%Y-%m-%d %H:%M:%S')"
-        git push
+      - run: echo 'No merge conflicts'
+        if: ${{ !steps.autoupdate.outputs.conflicted }}
