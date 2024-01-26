@@ -105,6 +105,9 @@ public class app extends Application {
             SQLQueries.truncateTable(connection);
             SQLDatabaseConnection.exitProgram(connection);
         });
+        addButton(optionsVBox, "Yousef", "Print Yousef's name", () -> {
+            System.out.println("Yousef");
+        });
 
         // Scene for options page
         Scene optionsScene = new Scene(optionsVBox, 400, 300);
