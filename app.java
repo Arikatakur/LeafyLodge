@@ -108,7 +108,7 @@ public class app extends Application {
 
         // Scene for options page
         Scene optionsScene = new Scene(optionsVBox, 400, 300);
-        sceneStack.push(optionsScene);
+        sceneStack.push(optionsScene);  
 
         primaryStage.setTitle("Database options");
         primaryStage.setScene(optionsScene);
