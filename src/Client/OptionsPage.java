@@ -2,7 +2,7 @@ package Client;
 
 
 import Server.SQLDatabaseConnection;
-import Server.SQLQueries;
+//import Server.SQLQueries;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,23 +24,27 @@ public class OptionsPage {
 
         // Create buttons with different actions
         addButton(optionsVBox, "Option 1", "Print the Maximum value of LoggedValue", () -> {
-            SQLQueries.MaxLoggedValueRecord(LoginPage.connection);
+            //SQLQueries.MaxLoggedValueRecord(LoginPage.connection);
+            OutputPage.OutPutOfMaxLoggedValue();
         });
 
         addButton(optionsVBox, "Option 2", "Prints all the LoggedValue based on the LogID", () -> {
-            SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, 1, 6);
+            OutputPage.OutPutOfTotalLoggedValue();
+            //SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, 1, 6);
         });
 
         addButton(optionsVBox, "Option 3", "Prints the LineID when the LoggedValue is minimum", () -> {
-            SQLQueries.LindIDwhereLoggedValueMin(LoginPage.connection);
+            OutputPage.OutputOfMinLoggedValue();
+            //SQLQueries.LindIDwhereLoggedValueMin(LoginPage.connection);
         });
 
         addButton(optionsVBox, "Option 4", "Pick a date to display where production was maximum", () -> {
-            OutputPage.createDatePage(primaryStage);
+            OutputPage.OutputOfMaxProduction(primaryStage);
         });
 
         addButton(optionsVBox, "Option 5", "Display when LoggedValue is equal to 0", () -> {
-            SQLQueries.LoggedValueEqualsZero(LoginPage.connection);
+            OutputPage.OutputOfLoggedValueEqualsZero();
+            //SQLQueries.LoggedValueEqualsZero(LoginPage.connection);
         });
         addButton(optionsVBox, "Quit", "Close the program!", () -> {
         //    SQLQueries.truncateTable(LoginPage.connection);

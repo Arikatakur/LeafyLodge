@@ -9,13 +9,73 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
 public class OutputPage {
-        public static void createDatePage(Stage primaryStage){
+
+    public static void OutPutOfMaxLoggedValue() {
+        Stage MaxLoggedValue = new Stage();
+        
+        MaxLoggedValue.setTitle("Max LoggedValue Record!");
+        Label label = new Label(Server.SQLQueries.MaxLoggedValueRecord(Client.LoginPage.connection));
+        Scene scene = new Scene(label, 500, 200);
+    //    LoginPage.sceneStack.push(scene);
+
+        MaxLoggedValue.setScene(scene);
+        MaxLoggedValue.show();
+    }
+
+    public static void OutPutOfTotalLoggedValue(){
+        Stage TotalLoggedValue = new Stage();
+        TotalLoggedValue.setTitle("Total logged value based on LineID!");
+
+        Label label = new Label(Server.SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, 1, 6));
+        Scene scene = new Scene(label, 500, 500);
+    //    LoginPage.sceneStack.push(scene);
+
+        TotalLoggedValue.setScene(scene);
+        TotalLoggedValue.show();
+    }
+
+    public static void OutputOfMinLoggedValue(){
+        Stage stage = new Stage();
+        stage.setTitle("LineID where logged value is minimum!");
+
+        Label label = new Label("");
+        Scene scene = new Scene(label, 500, 500);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // public static void OutputOfMaxProduction(){
+    //     Stage stage = new Stage();
+    //     stage.setTitle("LineID where production was maximum");
+
+    //     Label label = new Label();
+    //     Scene scene = new Scene(label, 500, 500);
+
+    //     stage.setScene(scene);
+    //     stage.show();
+
+    // }
+
+    public static void OutputOfLoggedValueEqualsZero(){
+        Stage stage = new Stage();
+        stage.setTitle("Logged value equals zero");
+
+        Label label = new Label(SQLQueries.LoggedValueEqualsZero(LoginPage.connection));
+        Scene scene = new Scene(label, 500, 500);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void OutputOfMaxProduction(Stage primaryStage){
         primaryStage.setTitle("Production Line Page");
 
         DatePicker startDatePicker = RestrictDate.createRestrictedDatePicker();
@@ -44,7 +104,16 @@ public class OutputPage {
             if (startDate != null && endDate != null) {
                 String startDateString = startDate.format(DateTimeFormatter.ISO_DATE);
                 String endDateString = endDate.format(DateTimeFormatter.ISO_DATE);
-                    SQLQueries.MaxProductionLineID(LoginPage.connection, startDateString, endDateString);
+
+                Stage stage = new Stage();
+                stage.setTitle("LineID where production was maximum");
+        
+                Label label = new Label(SQLQueries.MaxProductionLineID(LoginPage.connection, startDateString, endDateString));
+                Scene scene = new Scene(label, 500, 500);
+        
+                stage.setScene(scene);
+                stage.show();
+               
                 
             } else {
                 System.out.println("Please select both start and end dates.");
