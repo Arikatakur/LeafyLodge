@@ -1,3 +1,4 @@
+package Server;
 import java.sql.*;
 
 public class SQLCreateTable{
