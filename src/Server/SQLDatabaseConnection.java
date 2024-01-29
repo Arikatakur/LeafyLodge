@@ -1,3 +1,4 @@
+package Server;
 import java.io.*;
 import java.sql.*;
 import javafx.application.Platform;
@@ -5,8 +6,8 @@ import javafx.application.Platform;
 public class SQLDatabaseConnection {
 
     final static String DatabaseName = "LeafyLodge";
-    final static String url = "jdbc:mysql://localhost:3306/";
-    final static String filePath = "C://_saleem/information.sql";
+    public final static String url = "jdbc:mysql://localhost:3306/";
+    public final static String filePath = "C://_saleem/information.sql";
 
     public static Connection connectToDatabase(String url, String username, String password) throws SQLException{
         Connection connection = null;
@@ -66,7 +67,7 @@ public class SQLDatabaseConnection {
       
     }
 
-    static void executeSqlScript(Connection connection, String filePath) throws IOException, SQLException {
+    public static void executeSqlScript(Connection connection, String filePath) throws IOException, SQLException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             StringBuilder sb = new StringBuilder();

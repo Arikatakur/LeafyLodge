@@ -1,3 +1,4 @@
+package Server;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ public class SQLQueries {
 
     }
 
-    public static void MaxLoggedValueRecord(Connection connection) {
+    public static String MaxLoggedValueRecord(Connection connection) {
 
         try {
             String query = "SELECT LogID, LineID, LogTime, LoggedValue " +
@@ -35,17 +36,18 @@ public class SQLQueries {
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
 
-                        System.out.println("LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue);
+                        return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return "No data was found";
     }
 
     
-    public static void TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
+    public static String TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
         // retrieve total LoggedValue for LogID in the range 1-6
         
         try {
@@ -63,16 +65,18 @@ public class SQLQueries {
                         int retrievedLogId = resultSet.getInt("LogID");
                         double totalLoggedValue = resultSet.getDouble("TotalLoggedValue");
 
-                        System.out.println("LogID: " + retrievedLogId + ", TotalLoggedValue: " + totalLoggedValue);
+                        return "LogID: " + retrievedLogId + ", TotalLoggedValue: " + totalLoggedValue;
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return "Data is not found!";
     }    
 
-    public static void LindIDwhereLoggedValueMin(Connection connection){
+    public static String LindIDwhereLoggedValueMin(Connection connection){
         // Select LineID where LoggedValue is min except the value = 0!
         try{
             String query = "SELECT LineID, LoggedValue " +
@@ -85,16 +89,18 @@ public class SQLQueries {
                         String lineId = resultSet.getString("LineID");
                         double loggedValue = resultSet.getDouble("LoggedValue");
 
-                        System.out.println("LineID: " + lineId + ", LoggedValue: " + loggedValue);
+                        return "LineID: " + lineId + ", LoggedValue: " + loggedValue;
                     }
                 }
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
+
+        return "No data was found!";
     }
 
-    public static void MaxProductionLineID(Connection connection, String startDate, String endDate) {
+    public static String MaxProductionLineID(Connection connection, String startDate, String endDate) {
         try {
             String query = "SELECT LineID " +
                            "FROM Information " +
@@ -111,18 +117,19 @@ public class SQLQueries {
                     if (resultSet.next()) {
                         String maxProductionLineID = resultSet.getString("LineID");
 
-                        System.out.println("LineID with maximum production: " + maxProductionLineID);
-                    } else {
-                        System.out.println("No data found within the specified date range.");
+                        return "LineID with maximum production: " + maxProductionLineID;
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return "No data found within the specified date range.";
+
     }
 
-    public static void LoggedValueEqualsZero(Connection connection){
+    public static String LoggedValueEqualsZero(Connection connection){
         try{
             String query = "SELECT LogID, LineID, LogTime, LoggedValue "+
                             "FROM Information " + 
@@ -136,14 +143,15 @@ public class SQLQueries {
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
 
-                        System.out.println("LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue);
-                        
+                        return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;                        
                     }
                 }
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
+
+        return "No data was found!";
     }
 }
 
