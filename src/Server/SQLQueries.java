@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLQueries {
 
@@ -47,7 +49,8 @@ public class SQLQueries {
     }
 
     
-    public static String TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
+    public static List<String> TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
+        List<String> resultList = new ArrayList<>();
         // retrieve total LoggedValue for LogID in the range 1-6
         
         try {
@@ -65,7 +68,8 @@ public class SQLQueries {
                         int retrievedLogId = resultSet.getInt("LogID");
                         double totalLoggedValue = resultSet.getDouble("TotalLoggedValue");
 
-                        return "LogID: " + retrievedLogId + ", TotalLoggedValue: " + totalLoggedValue;
+                        String resultString = "LogID: " + retrievedLogId + ", TotalLoggedValue: " + totalLoggedValue;
+                        resultList.add(resultString);
                     }
                 }
             }
@@ -73,7 +77,7 @@ public class SQLQueries {
             e.printStackTrace();
         }
 
-        return "Data is not found!";
+        return resultList;
     }    
 
     public static String LindIDwhereLoggedValueMin(Connection connection){
@@ -129,7 +133,8 @@ public class SQLQueries {
 
     }
 
-    public static String LoggedValueEqualsZero(Connection connection){
+    public static List<String> LoggedValueEqualsZero(Connection connection){
+            List<String> resultList = new ArrayList<>();
         try{
             String query = "SELECT LogID, LineID, LogTime, LoggedValue "+
                             "FROM Information " + 
@@ -143,7 +148,8 @@ public class SQLQueries {
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
 
-                        return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;                        
+                        String resultString = "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
+                        resultList.add(resultString);                     
                     }
                 }
             }
@@ -151,7 +157,7 @@ public class SQLQueries {
             e.printStackTrace();
         }
 
-        return "No data was found!";
+        return resultList;
     }
 }
 

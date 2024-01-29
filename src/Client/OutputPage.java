@@ -3,6 +3,8 @@ package Client;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import java.util.List;
+
 import Server.RestrictDate;
 import Server.SQLQueries;
 import javafx.geometry.Pos;
@@ -10,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,8 +25,8 @@ public class OutputPage {
         Stage MaxLoggedValue = new Stage();
         
         MaxLoggedValue.setTitle("Max LoggedValue Record!");
-        Label label = new Label(Server.SQLQueries.MaxLoggedValueRecord(Client.LoginPage.connection));
-        Scene scene = new Scene(label, 500, 200);
+        Label label = new Label(SQLQueries.MaxLoggedValueRecord(Client.LoginPage.connection));
+        Scene scene = new Scene(label, 500, 50);
     //    LoginPage.sceneStack.push(scene);
 
         MaxLoggedValue.setScene(scene);
@@ -30,46 +34,58 @@ public class OutputPage {
     }
 
     public static void OutPutOfTotalLoggedValue(){
-        Stage TotalLoggedValue = new Stage();
-        TotalLoggedValue.setTitle("Total logged value based on LineID!");
+        Stage inputStage = new Stage();
+            inputStage.setTitle("Input Window");
 
-        Label label = new Label(Server.SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, 1, 6));
-        Scene scene = new Scene(label, 500, 500);
-    //    LoginPage.sceneStack.push(scene);
+            TextField startLogIdField = new TextField();
+            TextField endLogIdField = new TextField();
 
-        TotalLoggedValue.setScene(scene);
-        TotalLoggedValue.show();
+            Button submitButton = new Button("Submit");
+            submitButton.setOnAction(e -> {
+                int startLogId = Integer.parseInt(startLogIdField.getText());
+                int endLogId = Integer.parseInt(endLogIdField.getText());
+
+                List<String> resultsList = Server.SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, startLogId, endLogId);
+
+                Stage resultsStage = new Stage();
+                resultsStage.setTitle("Total logged value based on LineID");
+
+                String resultsString = String.join("\n", resultsList);
+                Label label = new Label(resultsString);
+                Scene scene = new Scene(label, 300, 150);
+                resultsStage.setScene(scene);
+                resultsStage.show();
+
+                inputStage.close();
+        });
+
+        VBox inputLayout = new VBox(new Label("Start LogID:"), startLogIdField, new Label("End LogID:"), endLogIdField, submitButton);
+        inputStage.setScene(new Scene(inputLayout, 200, 150));
+        inputStage.show();
     }
 
     public static void OutputOfMinLoggedValue(){
         Stage stage = new Stage();
         stage.setTitle("LineID where logged value is minimum!");
 
-        Label label = new Label("");
-        Scene scene = new Scene(label, 500, 500);
+        Label label = new Label(SQLQueries.LindIDwhereLoggedValueMin(LoginPage.connection));
+        Scene scene = new Scene(label, 500, 50);
 
         stage.setScene(scene);
         stage.show();
     }
 
-    // public static void OutputOfMaxProduction(){
-    //     Stage stage = new Stage();
-    //     stage.setTitle("LineID where production was maximum");
-
-    //     Label label = new Label();
-    //     Scene scene = new Scene(label, 500, 500);
-
-    //     stage.setScene(scene);
-    //     stage.show();
-
-    // }
-
     public static void OutputOfLoggedValueEqualsZero(){
         Stage stage = new Stage();
         stage.setTitle("Logged value equals zero");
+        List<String> resultList = SQLQueries.LoggedValueEqualsZero(LoginPage.connection);
+        String resulString = String.join("\n", resultList);
+        Label label = new Label(resulString);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(label);
+        Scene scene = new Scene(new VBox(scrollPane),500, 400);
 
-        Label label = new Label(SQLQueries.LoggedValueEqualsZero(LoginPage.connection));
-        Scene scene = new Scene(label, 500, 500);
+        
 
         stage.setScene(scene);
         stage.show();
@@ -107,9 +123,8 @@ public class OutputPage {
 
                 Stage stage = new Stage();
                 stage.setTitle("LineID where production was maximum");
-        
                 Label label = new Label(SQLQueries.MaxProductionLineID(LoginPage.connection, startDateString, endDateString));
-                Scene scene = new Scene(label, 500, 500);
+                Scene scene = new Scene(label, 500, 50);
         
                 stage.setScene(scene);
                 stage.show();
