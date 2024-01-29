@@ -1,16 +1,9 @@
 package Client;
 
-
-import java.util.List;
-
-import Server.SQLDatabaseConnection;
-//import Server.SQLQueries;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -48,7 +41,7 @@ public class OptionsPage {
             OutputPage.OutputOfLoggedValueEqualsZero();
         });
         addButton(optionsVBox, "Quit", "Close the program!", () -> {
-            SQLDatabaseConnection.exitProgram(LoginPage.connection);
+            Server.SQLDatabaseConnection.exitProgram(LoginPage.connection);
         });
 
         // Scene for options page
