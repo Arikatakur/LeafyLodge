@@ -7,7 +7,7 @@ public class app extends Application {
 
     public void start(Stage primaryStage) {
         VBox loginVBox = Client.LoginPage.createLoginVBox(primaryStage);
-        Scene loginScene = new Scene(loginVBox, 400, 200);
+        Scene loginScene = new Scene(loginVBox, 300, 200);
 
         Client.LoginPage.sceneStack.push(loginScene);
         primaryStage.setTitle("Login to Database");

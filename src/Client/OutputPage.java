@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import Server.*;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -59,7 +60,9 @@ public class OutputPage {
         });
 
         VBox inputLayout = new VBox(new Label("Start LogID:"), startLogIdField, new Label("End LogID:"), endLogIdField, submitButton);
-        inputStage.setScene(new Scene(inputLayout, 200, 150));
+        inputLayout.setPadding(new Insets(10,10,10,10));
+        inputLayout.setSpacing(10);
+        inputStage.setScene(new Scene(inputLayout, 250, 170));
         inputStage.show();
     }
 
