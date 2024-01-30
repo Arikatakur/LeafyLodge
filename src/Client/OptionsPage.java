@@ -12,41 +12,43 @@ import javafx.stage.Stage;
 public class OptionsPage {
      public static void createOptionsPage(Stage primaryStage) {
 
+        
         VBox optionsVBox = new VBox(10);
         optionsVBox.setAlignment(Pos.CENTER);
 
         Label titleLabel = new Label("Welcome to the Database");
         optionsVBox.getChildren().add(titleLabel);
+        Scene optionsScene = new Scene(optionsVBox, 400, 300);
+        LoginPage.sceneStack.push(optionsScene);
 
 
         // Create buttons with different actions
         addButton(optionsVBox, "Option 1", "Print the Maximum value of LoggedValue", () -> {
-            OutputPage.OutPutOfMaxLoggedValue();
+            OutputPage.OutPutOfMaxLoggedValue(primaryStage,optionsScene);
         });
 
         addButton(optionsVBox, "Option 2", "Prints all the LoggedValue based on the LogID", () -> {
-            OutputPage.OutPutOfTotalLoggedValue();
+            OutputPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);
             
         });
 
         addButton(optionsVBox, "Option 3", "Prints the LineID when the LoggedValue is minimum", () -> {
-            OutputPage.OutputOfMinLoggedValue();
+            OutputPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
         });
 
         addButton(optionsVBox, "Option 4", "Pick a date to display where production was maximum", () -> {
-            OutputPage.OutputOfMaxProduction(primaryStage);
+            OutputPage.OutputOfMaxProduction(primaryStage, optionsScene);
         });
 
         addButton(optionsVBox, "Option 5", "Display when LoggedValue is equal to 0", () -> {
-            OutputPage.OutputOfLoggedValueEqualsZero();
+            OutputPage.OutputOfLoggedValueEqualsZero(primaryStage, optionsScene);
         });
         addButton(optionsVBox, "Quit", "Close the program!", () -> {
             Server.SQLDatabaseConnection.exitProgram(LoginPage.connection);
         });
 
         // Scene for options page
-        Scene optionsScene = new Scene(optionsVBox, 400, 300);
-        LoginPage.sceneStack.push(optionsScene);
+        
 
         primaryStage.setTitle("Database options");
         primaryStage.setScene(optionsScene);

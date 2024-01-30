@@ -26,5 +26,4 @@ public class app extends Application {
         
         launch(args);
     }
-
 }

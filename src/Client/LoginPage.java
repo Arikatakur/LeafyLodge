@@ -25,7 +25,7 @@ public class LoginPage {
     public static final Stack<Scene> sceneStack = new Stack<>();
     public static Connection connection;
 
-        public static VBox createLoginVBox(Stage primaryStage) {
+    public static VBox createLoginVBox(Stage primaryStage) {
         VBox loginVBox = new VBox();
         loginVBox.setPadding(new Insets(10,10,10,10));
         loginVBox.setSpacing(10);
@@ -59,9 +59,8 @@ public class LoginPage {
 
                     OptionsPage.createOptionsPage(primaryStage);
                 } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    
-                }catch(IOException ex1){
+                    ex.printStackTrace();
+                } catch (IOException ex1) {
                     ex1.printStackTrace();
                 }
             }
