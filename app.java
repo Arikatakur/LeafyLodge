@@ -17,6 +17,13 @@ public class app extends Application {
 
 
     public static void main(String args[]) {
+
+
+        /*  
+            Saleem Yousef - 213523418
+            Romaisa Suliman - 207674243  
+        */
+        
         launch(args);
     }
 
