@@ -22,28 +22,27 @@ public class OptionsPage {
         LoginPage.sceneStack.push(optionsScene);
 
 
-        // Create buttons with different actions
         addButton(optionsVBox, "Option 1", "Print the Maximum value of LoggedValue", () -> {
-            OutputPage.OutPutOfMaxLoggedValue(primaryStage,optionsScene);
+            resultsPage.OutPutOfMaxLoggedValue(primaryStage,optionsScene);
         });
 
-        addButton(optionsVBox, "Option 2", "Prints all the LoggedValue based on the LogID", () -> {
-            OutputPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);
+        addButton(optionsVBox, "Option 2", "Prints the total LoggedValue based on the LogID", () -> {
+            resultsPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);
             
         });
 
         addButton(optionsVBox, "Option 3", "Prints the LineID when the LoggedValue is minimum", () -> {
-            OutputPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
+            resultsPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
         });
 
         addButton(optionsVBox, "Option 4", "Pick a date to display where production was maximum", () -> {
-            OutputPage.OutputOfMaxProduction(primaryStage, optionsScene);
+            resultsPage.OutputOfMaxProduction(primaryStage, optionsScene);
         });
 
         addButton(optionsVBox, "Option 5", "Display when LoggedValue is equal to 0", () -> {
-            OutputPage.OutputOfLoggedValueEqualsZero(primaryStage, optionsScene);
+            resultsPage.resultsOfLoggedValueEqualsZero(primaryStage, optionsScene);
         });
-        addButton(optionsVBox, "Quit", "Close the program!", () -> {
+        addButton(optionsVBox, "Quit", "", () -> {
             Server.SQLDatabaseConnection.exitProgram(LoginPage.connection);
         });
 
@@ -56,7 +55,7 @@ public class OptionsPage {
 
     private static void addButton(VBox vbox, String buttonText, String description, Runnable action) {
         HBox buttonBox = new HBox(10); 
-        buttonBox.setAlignment(Pos.CENTER_LEFT); 
+        buttonBox.setAlignment(Pos.CENTER); 
 
         Button button = new Button(buttonText);
 

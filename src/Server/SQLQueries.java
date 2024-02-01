@@ -4,8 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SQLQueries {
 
@@ -49,8 +49,8 @@ public class SQLQueries {
     }
 
     
-    public static List<String> TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
-        List<String> resultList = new ArrayList<>();
+    public static ObservableList<Product> TotalLoggedValueForLogID(Connection connection, int startLogId, int endLogId) {
+        ObservableList<Product> products = FXCollections.observableArrayList();;
         // retrieve total LoggedValue for LogID in the range 1-6
         
         try {
@@ -68,8 +68,7 @@ public class SQLQueries {
                         int retrievedLogId = resultSet.getInt("LogID");
                         double totalLoggedValue = resultSet.getDouble("TotalLoggedValue");
 
-                        String resultString = "LogID: " + retrievedLogId + ", TotalLoggedValue: " + totalLoggedValue;
-                        resultList.add(resultString);
+                        products.add(new Product(retrievedLogId, totalLoggedValue));
                     }
                 }
             }
@@ -77,7 +76,7 @@ public class SQLQueries {
             e.printStackTrace();
         }
 
-        return resultList;
+        return products;
     }    
 
     public static String LindIDwhereLoggedValueMin(Connection connection){
@@ -133,8 +132,8 @@ public class SQLQueries {
 
     }
 
-    public static List<String> LoggedValueEqualsZero(Connection connection){
-            List<String> resultList = new ArrayList<>();
+    public static ObservableList<Product> LoggedValueEqualsZero(Connection connection){
+            ObservableList<Product> products = FXCollections.observableArrayList();
         try{
             String query = "SELECT LogID, LineID, LogTime, LoggedValue "+
                             "FROM Information " + 
@@ -147,9 +146,7 @@ public class SQLQueries {
                         String lineId = resultSet.getString("LineID");
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
-
-                        String resultString = "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
-                        resultList.add(resultString);                     
+                        products.add(new Product(logId, lineId, logTime, loggedValue));                  
                     }
                 }
             }
@@ -157,7 +154,7 @@ public class SQLQueries {
             e.printStackTrace();
         }
 
-        return resultList;
+        return products;
     }
 }
 

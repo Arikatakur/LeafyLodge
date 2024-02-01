@@ -3,9 +3,6 @@ package Client;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import java.util.List;
-
-
 import Server.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,14 +11,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class OutputPage {
+public class resultsPage {
 
     public static void OutPutOfMaxLoggedValue(Stage primaryStage, Scene optionsScene) {
         primaryStage.setTitle("Max LoggedValue Record!");
@@ -30,7 +29,6 @@ public class OutputPage {
         VBox resultVbox = new VBox(label, backButton);
         resultVbox.setAlignment(Pos.CENTER);
         Scene resultScene = new Scene(resultVbox, 500, 50);
-    //    LoginPage.sceneStack.push(scene);
 
         primaryStage.setScene(resultScene);
         primaryStage.show();
@@ -40,9 +38,11 @@ public class OutputPage {
         }); 
     }
 
+    @SuppressWarnings("unchecked")
     public static void OutPutOfTotalLoggedValue(Stage primaryStage, Scene optionsScene){
             primaryStage.setTitle("Input Window");
 
+            TableView<Product> table = new TableView<>();
             TextField startLogIdField = new TextField();
             TextField endLogIdField = new TextField();
 
@@ -53,14 +53,22 @@ public class OutputPage {
                 int startLogId = Integer.parseInt(startLogIdField.getText());
                 int endLogId = Integer.parseInt(endLogIdField.getText());
 
-                List<String> resultsList = Server.SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, startLogId, endLogId);
-
                 primaryStage.setTitle("Total logged value based on LineID");
 
-                String resultsString = String.join("\n", resultsList);
-                Label label = new Label(resultsString);
-                VBox resultVBox = new VBox(label, backButton);
-                Scene scene = new Scene(resultVBox, 300, 150);
+
+                TableColumn<Product, Integer> logIdColumn = new TableColumn<>("logID");
+                logIdColumn.setMinWidth(50);
+                logIdColumn.setCellValueFactory(new PropertyValueFactory<>("logId"));
+
+                TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
+                loggedValueColumn.setMinWidth(50);
+                loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+
+                table.setItems(SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, startLogId, endLogId));
+                table.getColumns().addAll(logIdColumn, loggedValueColumn);
+
+                VBox resultVBox = new VBox(table, backButton);
+                Scene scene = new Scene(resultVBox, 270, 170);
 
                 resultVBox.setAlignment(Pos.CENTER);
                 primaryStage.setScene(scene);
@@ -119,31 +127,6 @@ public class OutputPage {
         });
     }
 
-    public static void OutputOfLoggedValueEqualsZero(Stage primaryStage, Scene optionsScene){
-        primaryStage.setTitle("Logged value equals zero");
-
-        List<String> resultList = SQLQueries.LoggedValueEqualsZero(LoginPage.connection);
-
-        Button backButton = new Button("Back");
-        ScrollPane scrollPane = new ScrollPane();
-        VBox resultVbox = new VBox(scrollPane, backButton);
-        Scene resultScene = new Scene (resultVbox ,500, 400);
-        resultVbox.setAlignment(Pos.CENTER);
-        backButton.setPrefSize(100, 50);
-        String resulString = String.join("\n", resultList);
-
-        Label label = new Label(resulString);
-        scrollPane.setContent(label);
-                
-        primaryStage.setScene(resultScene);
-        
-        backButton.setOnAction(e -> {
-            primaryStage.setScene(optionsScene);
-        });
-        
-
-
-    }
 
     public static void OutputOfMaxProduction(Stage primaryStage, Scene optionsScene){
         primaryStage.setTitle("Production Line Page");
@@ -198,10 +181,48 @@ public class OutputPage {
 
         backButton.setOnAction(event -> {
             primaryStage.setScene(optionsScene);
-        });
+        }); 
 
         primaryStage.show();
         
     }
 
+
+    @SuppressWarnings("unchecked")
+    public static void resultsOfLoggedValueEqualsZero(Stage primaryStage, Scene optionsScene){
+        primaryStage.setTitle("Logged value equals zero");
+        TableView<Product> table;
+
+        TableColumn<Product, Integer> logIdColumn = new TableColumn<>("logID");
+        logIdColumn.setMinWidth(50);
+        logIdColumn.setCellValueFactory(new PropertyValueFactory<>("logId"));
+        
+
+        TableColumn<Product, String> lineIdColumn = new TableColumn<>("lineID");
+        lineIdColumn.setMinWidth(70);
+        lineIdColumn.setCellValueFactory(new PropertyValueFactory<>("lineId"));
+
+        TableColumn<Product, String> logTimeColumn = new TableColumn<>("LogTime");
+        logTimeColumn.setMinWidth(170);
+        logTimeColumn.setCellValueFactory(new PropertyValueFactory<>("logTime"));
+
+        TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
+        loggedValueColumn.setMinWidth(50);
+        loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+       
+        table = new TableView<>();
+        table.setItems(SQLQueries.LoggedValueEqualsZero(LoginPage.connection));
+        table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn);
+
+        Button backButton = new Button("Back");
+        VBox resultVbox = new VBox(table, backButton);
+        Scene resultScene = new Scene (resultVbox);
+        resultVbox.setAlignment(Pos.CENTER);
+
+        primaryStage.setScene(resultScene);
+        backButton.setOnAction(e -> {
+            primaryStage.setScene(optionsScene);
+        });
+
+    }
 }
