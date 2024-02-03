@@ -13,7 +13,7 @@ public class SQLDatabaseConnection {
         Connection connection = null;
 
         try {
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+           // DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();

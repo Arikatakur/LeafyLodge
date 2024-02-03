@@ -3,14 +3,12 @@ package Client;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Stack;
 
 import Server.SQLCreateTable;
 import Server.SQLDatabaseConnection;
 import Server.SQLQueries;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -19,10 +17,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginPage {
+public class loginPage {
 
     
-    public static final Stack<Scene> sceneStack = new Stack<>();
     public static Connection connection;
 
     public static VBox createLoginVBox(Stage primaryStage) {
@@ -57,7 +54,7 @@ public class LoginPage {
                     SQLQueries.truncateTable(connection);
                     SQLDatabaseConnection.executeSqlScript(connection, SQLDatabaseConnection.filePath);
 
-                    OptionsPage.createOptionsPage(primaryStage);
+                    optionsPage.createOptionsPage(primaryStage);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 } catch (IOException ex1) {

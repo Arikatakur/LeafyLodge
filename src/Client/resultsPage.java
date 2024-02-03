@@ -24,7 +24,7 @@ public class resultsPage {
 
     public static void OutPutOfMaxLoggedValue(Stage primaryStage, Scene optionsScene) {
         primaryStage.setTitle("Max LoggedValue Record!");
-        Label label = new Label(SQLQueries.MaxLoggedValueRecord(Client.LoginPage.connection));
+        Label label = new Label(SQLQueries.MaxLoggedValueRecord(Client.loginPage.connection));
         Button backButton = new Button("Back");
         VBox resultVbox = new VBox(label, backButton);
         resultVbox.setAlignment(Pos.CENTER);
@@ -64,7 +64,7 @@ public class resultsPage {
                 loggedValueColumn.setMinWidth(50);
                 loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
 
-                table.setItems(SQLQueries.TotalLoggedValueForLogID(LoginPage.connection, startLogId, endLogId));
+                table.setItems(SQLQueries.TotalLoggedValueForLogID(loginPage.connection, startLogId, endLogId));
                 table.getColumns().addAll(logIdColumn, loggedValueColumn);
 
                 VBox resultVBox = new VBox(table, backButton);
@@ -113,7 +113,7 @@ public class resultsPage {
         primaryStage.setTitle("LineID where logged value is minimum!");
 
         Button backButton = new Button("Back");
-        Label label = new Label(SQLQueries.LindIDwhereLoggedValueMin(LoginPage.connection));
+        Label label = new Label(SQLQueries.LindIDwhereLoggedValueMin(loginPage.connection));
         VBox resultVbox = new VBox(label, backButton);
         Scene resultScene = new Scene(resultVbox, 300, 70);
         resultVbox.setAlignment(Pos.CENTER);
@@ -131,8 +131,8 @@ public class resultsPage {
     public static void OutputOfMaxProduction(Stage primaryStage, Scene optionsScene){
         primaryStage.setTitle("Production Line Page");
 
-        DatePicker startDatePicker = RestrictDate.createRestrictedDatePicker();
-        DatePicker endDatePicker = RestrictDate.createRestrictedDatePicker();
+        DatePicker startDatePicker = restrictDate.createRestrictedDatePicker();
+        DatePicker endDatePicker = restrictDate.createRestrictedDatePicker();
         Button submitButton = new Button("Submit");
         Button backButton = new Button("Back");
 
@@ -146,7 +146,6 @@ public class resultsPage {
         vbox.getChildren().addAll(startDatePicker, endDatePicker, buttonBox);
 
         Scene dateScene = new Scene(vbox, 300, 200);
-        LoginPage.sceneStack.push(dateScene);
         primaryStage.setScene(dateScene);
 
 
@@ -160,7 +159,7 @@ public class resultsPage {
 
                 Stage stage = new Stage();
                 stage.setTitle("LineID where production was maximum");
-                Label label = new Label(SQLQueries.MaxProductionLineID(LoginPage.connection, startDateString, endDateString));
+                Label label = new Label(SQLQueries.MaxProductionLineID(loginPage.connection, startDateString, endDateString));
                 VBox dateVbox = new VBox(label, backButton);
                 Scene scene = new Scene(dateVbox, 500, 50);
                 dateVbox.setAlignment(Pos.CENTER);
@@ -211,7 +210,7 @@ public class resultsPage {
         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
        
         table = new TableView<>();
-        table.setItems(SQLQueries.LoggedValueEqualsZero(LoginPage.connection));
+        table.setItems(SQLQueries.LoggedValueEqualsZero(loginPage.connection));
         table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn);
 
         Button backButton = new Button("Back");

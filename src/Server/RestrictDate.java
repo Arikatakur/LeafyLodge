@@ -5,7 +5,7 @@ import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
 import java.time.Month;
 
-public class RestrictDate extends DateCell {
+public class restrictDate extends DateCell {
 
 
     public static DatePicker createRestrictedDatePicker() {

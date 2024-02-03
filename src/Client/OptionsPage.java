@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class OptionsPage {
+public class optionsPage {
      public static void createOptionsPage(Stage primaryStage) {
 
         
@@ -19,7 +19,7 @@ public class OptionsPage {
         Label titleLabel = new Label("Welcome to the Database");
         optionsVBox.getChildren().add(titleLabel);
         Scene optionsScene = new Scene(optionsVBox, 400, 300);
-        LoginPage.sceneStack.push(optionsScene);
+        optionsScene.getStylesheets().addAll("/Style/style.css");
 
 
         addButton(optionsVBox, "Option 1", "Print the Maximum value of LoggedValue", () -> {
@@ -43,7 +43,7 @@ public class OptionsPage {
             resultsPage.resultsOfLoggedValueEqualsZero(primaryStage, optionsScene);
         });
         addButton(optionsVBox, "Quit", "", () -> {
-            Server.SQLDatabaseConnection.exitProgram(LoginPage.connection);
+            Server.SQLDatabaseConnection.exitProgram(loginPage.connection);
         });
 
         // Scene for options page
