@@ -1,0 +1,16 @@
+.root{
+    -fx-background-color:  #383838;
+    -fx-font-size: 12pt;
+
+}
+.label{
+    -fx-text-fill: #07f2d6;
+}
+.button{
+    -fx-background-color: #9ce9ad ;
+    -fx-text-fill: #000000;
+}
+.quit-button{
+    -fx-background-color: #AB4642;
+    -fx-text-fill: #ffffff;
+}

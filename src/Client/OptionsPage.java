@@ -15,11 +15,11 @@ public class optionsPage {
         
         VBox optionsVBox = new VBox(10);
         optionsVBox.setAlignment(Pos.CENTER);
-
         Label titleLabel = new Label("Welcome to the Database");
-        optionsVBox.getChildren().add(titleLabel);
-        Scene optionsScene = new Scene(optionsVBox, 400, 300);
-        optionsScene.getStylesheets().addAll("/Style/style.css");
+        optionsVBox.getChildren().addAll(titleLabel);
+        Scene optionsScene = new Scene(optionsVBox, 500, 320);
+        optionsScene.getStylesheets().addAll("/Style/OptionsPage.css");
+        
 
 
         addButton(optionsVBox, "Option 1", "Print the Maximum value of LoggedValue", () -> {
@@ -58,6 +58,10 @@ public class optionsPage {
         buttonBox.setAlignment(Pos.CENTER); 
 
         Button button = new Button(buttonText);
+
+        if (buttonText.equals("Quit")) {
+            button.getStyleClass().add("quit-button");
+        }
 
         button.setOnAction(e -> {
             System.out.println(buttonText + " clicked");
