@@ -27,6 +27,7 @@ public class optionsPage {
         });
 
         addButton(optionsVBox, "Option 2", "Prints the total LoggedValue based on the LogID", () -> {
+            //barChart.createBarChartPage( optionsScene, 1, 6);
             resultsPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);
             
         });

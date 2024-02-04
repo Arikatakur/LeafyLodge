@@ -38,11 +38,11 @@ public class resultsPage {
         }); 
     }
 
-    @SuppressWarnings("unchecked")
+    //@SuppressWarnings("unchecked")
     public static void OutPutOfTotalLoggedValue(Stage primaryStage, Scene optionsScene){
             primaryStage.setTitle("Input Window");
 
-            TableView<Product> table = new TableView<>();
+            //TableView<Product> table = new TableView<>();
             TextField startLogIdField = new TextField();
             TextField endLogIdField = new TextField();
 
@@ -50,43 +50,22 @@ public class resultsPage {
             Button submitButton = new Button("Submit");
             submitButton.setOnAction(e -> {
                 try {
-                int startLogId = Integer.parseInt(startLogIdField.getText());
-                int endLogId = Integer.parseInt(endLogIdField.getText());
+                    int startLogId = Integer.parseInt(startLogIdField.getText());
+                    int endLogId = Integer.parseInt(endLogIdField.getText());
 
-                primaryStage.setTitle("Total logged value based on LineID");
+                    primaryStage.setTitle("Total logged value based on LineID");
 
+                    barChart.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId);
+                    
 
-                TableColumn<Product, Integer> logIdColumn = new TableColumn<>("logID");
-                logIdColumn.setMinWidth(50);
-                logIdColumn.setCellValueFactory(new PropertyValueFactory<>("logId"));
-
-                TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
-                loggedValueColumn.setMinWidth(50);
-                loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
-
-                table.setItems(SQLQueries.TotalLoggedValueForLogID(loginPage.connection, startLogId, endLogId));
-                table.getColumns().addAll(logIdColumn, loggedValueColumn);
-
-                VBox resultVBox = new VBox(table, backButton);
-                Scene scene = new Scene(resultVBox, 270, 170);
-
-                resultVBox.setAlignment(Pos.CENTER);
-                primaryStage.setScene(scene);
-
-                backButton.setOnAction(event -> {
-                    primaryStage.setScene(optionsScene);
-                });
-
-                primaryStage.show();
-
-            } catch (NumberFormatException ex) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Input Error");
-                alert.setHeaderText("Invalid Input");
-                alert.setContentText("Please enter valid integer values for Log IDs.");
-                alert.showAndWait();
-            }
-        });
+                } catch (NumberFormatException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Input Error");
+                    alert.setHeaderText("Invalid Input");
+                    alert.setContentText("Please enter valid integer values for Log IDs.");
+                    alert.showAndWait();
+                }
+            });
 
         primaryStage.show();
 
@@ -150,6 +129,7 @@ public class resultsPage {
 
 
         submitButton.setOnAction(event -> {
+
             LocalDate startDate = startDatePicker.getValue();
             LocalDate endDate = endDatePicker.getValue();
 
