@@ -54,7 +54,6 @@ public class loginPage {
                     SQLQueries.truncateTable(connection);
                     SQLDatabaseConnection.executeSqlScript(connection, SQLDatabaseConnection.filePath);
 
-                    //barChart.createBarChartPage(primaryStage);
                     optionsPage.createOptionsPage(primaryStage);
                 } catch (SQLException ex) {
                     ex.printStackTrace();

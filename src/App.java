@@ -19,6 +19,7 @@ public class App extends Application {
         VBox loginVBox = Client.loginPage.createLoginVBox(primaryStage);
         Scene loginScene = new Scene(loginVBox, 320, 260);
         loginScene.getStylesheets().addAll("/Style/LoginPage.css");
+        
 
         primaryStage.setTitle("Login to Database");
         primaryStage.setScene(loginScene);

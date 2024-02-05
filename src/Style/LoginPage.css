@@ -1,12 +1,24 @@
 .root{
-    -fx-background-color:  #383838;
-    background-color: #383838;
+    /* -fx-background-color:  #383838;
+    background-color: #383838; */
+    -fx-background-image: url("icon2.jpg");
+    background-image: url("icon2.jpg");
     -fx-font-size: 12pt;
     font-size: 12pt;
 
 }
 .label{
-    -fx-text-fill: #07f2d6;
+    -fx-text-fill: linear-gradiant(#000000, #04787e) ;
+}
+.label-fancytext {
+    -fx-font: 100px Tahoma;
+    font: 100px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);
+    fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);
+    -fx-stroke: black;
+    stroke: black;
+    -fx-stroke-width: 1;
+    stroke-width: 1;
 }
 .button{
     -fx-background-color: #AB4642 ;
