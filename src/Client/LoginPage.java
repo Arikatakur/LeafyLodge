@@ -1,12 +1,10 @@
 package Client;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import Server.SQLCreateTable;
 import Server.SQLDatabaseConnection;
-import Server.SQLQueries;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -51,14 +49,10 @@ public class loginPage {
                     SQLDatabaseConnection.createDatabaseSQL(connection);
                     SQLDatabaseConnection.useDatabaseSQL(connection);
                     SQLCreateTable.createTable(connection);
-                    SQLQueries.truncateTable(connection);
-                    SQLDatabaseConnection.executeSqlScript(connection, SQLDatabaseConnection.filePath);
 
                     optionsPage.createOptionsPage(primaryStage);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                } catch (IOException ex1) {
-                    ex1.printStackTrace();
                 }
             }
         });

@@ -1,14 +1,6 @@
 package Server;
 
 public class Product {
-    String createTableSQL = "CREATE TABLE IF NOT EXISTS Information" +
-                    " (LogID INT, " +
-                    "LineID VARCHAR(512), " +
-                    "LogTime VARCHAR(512), " +
-                    "LoggedValue DOUBLE, " +
-                    "CmdType INT, " +
-                    "Description VARCHAR(512), " +
-                    "UnitType VARCHAR(512))";
 
     private int logId, cmdType;
     private String lineId, logTime, description, unitType;
