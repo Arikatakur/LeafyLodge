@@ -38,11 +38,10 @@ public class resultsPage {
         }); 
     }
 
-    //@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public static void OutPutOfTotalLoggedValue(Stage primaryStage, Scene optionsScene){
             primaryStage.setTitle("Input Window");
 
-            //TableView<Product> table = new TableView<>();
             TextField startLogIdField = new TextField();
             TextField endLogIdField = new TextField();
 
@@ -52,10 +51,56 @@ public class resultsPage {
                 try {
                     int startLogId = Integer.parseInt(startLogIdField.getText());
                     int endLogId = Integer.parseInt(endLogIdField.getText());
+                    
+                    primaryStage.setTitle("Pick an option!");
 
-                    primaryStage.setTitle("Total logged value based on LineID");
+                    Button showCharts = new Button("Show Charts");
+                    Button showList = new Button("Show List");
+                    
+                    HBox OptionsBox = new HBox(10);
+                    OptionsBox.getChildren().addAll(showCharts, showList, backButton);
+                    OptionsBox.setAlignment(Pos.CENTER);
 
-                    barChart.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId);
+                    Scene showScene = new Scene(OptionsBox, 250, 170);
+
+                    showCharts.setOnAction(e1 -> {
+                       Charts.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId); 
+                    });
+                    showList.setOnAction(e1 -> {
+                        primaryStage.setTitle("Total loggedValue List based on LogID");
+                        TableView<Product> table;
+
+                        TableColumn<Product, Integer> logIdColumn = new TableColumn<>("logID");
+                        logIdColumn.setMinWidth(50);
+                        logIdColumn.setCellValueFactory(new PropertyValueFactory<>("logId"));
+                        TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
+                        loggedValueColumn.setMinWidth(50);
+                        loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+
+                        table = new TableView<>();
+                        table.setItems(SQLQueries.TotalLoggedValueForLogID(loginPage.connection,startLogId, endLogId));
+                        table.getColumns().addAll(logIdColumn, loggedValueColumn);
+;
+                        VBox resultVbox = new VBox(table, backButton);
+                        Scene resultScene = new Scene (resultVbox, 170, 170);
+                        resultVbox.setAlignment(Pos.CENTER);
+
+                        primaryStage.setScene(resultScene);
+                        backButton.setOnAction(e2 -> {
+                            primaryStage.setScene(showScene);
+                        });
+                    }); 
+                    
+                    backButton.setOnAction(e1 -> {
+                        primaryStage.setScene(showScene);
+                    });
+
+
+                    primaryStage.setScene(showScene);
+                    primaryStage.show();
+
+                    //primaryStage.setTitle("Total logged value based on LineID");
+                    //Charts.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId);
                     
 
                 } catch (NumberFormatException ex) {
@@ -120,9 +165,12 @@ public class resultsPage {
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().addAll(submitButton, backButton);
 
+        Label startLabel = new Label("Start Date");
+        Label endLabel = new Label("End Date");
+
         VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(startDatePicker, endDatePicker, buttonBox);
+        vbox.getChildren().addAll(startLabel, startDatePicker, endLabel, endDatePicker, buttonBox);
 
         Scene dateScene = new Scene(vbox, 300, 200);
         primaryStage.setScene(dateScene);
@@ -164,6 +212,36 @@ public class resultsPage {
 
         primaryStage.show();
         
+    }
+        //test method
+    @SuppressWarnings("unchecked")
+    public static void resultOfLineIdMin(Stage primaryStage, Scene optionsScene){
+        primaryStage.setTitle("Line ID When LoggedValue is Minimum!");
+        TableView<Product> table;
+
+        TableColumn<Product, String> lineIdColumn = new TableColumn<>("lineID");
+        lineIdColumn.setMinWidth(70);
+        lineIdColumn.setCellValueFactory(new PropertyValueFactory<>("lineId"));
+
+        TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
+        loggedValueColumn.setMinWidth(50);
+        loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+
+        table = new TableView<>();
+        table.setItems(SQLQueries.lineIdWhereLoggedValueMin(loginPage.connection));
+        table.getColumns().addAll(lineIdColumn, loggedValueColumn);
+
+        Button backButton = new Button("Back");
+        VBox resultVbox = new VBox(table, backButton);
+        Scene resultScene = new Scene (resultVbox, 170, 120);
+        resultVbox.setAlignment(Pos.CENTER);
+
+        primaryStage.setScene(resultScene);
+        backButton.setOnAction(e -> {
+            primaryStage.setScene(optionsScene);
+        });
+
+
     }
 
 

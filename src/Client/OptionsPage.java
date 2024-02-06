@@ -33,7 +33,8 @@ public class optionsPage {
         });
 
         addButton(optionsVBox, "Option 3", "Prints the LineID when the LoggedValue is minimum", () -> {
-            resultsPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
+            //resultsPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
+            resultsPage.resultOfLineIdMin(primaryStage, optionsScene);
         });
 
         addButton(optionsVBox, "Option 4", "Pick a date to display where production was maximum", () -> {

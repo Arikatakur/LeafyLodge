@@ -39,6 +39,10 @@ public class Product {
         setLogTime(logTime);
         setLoggedValue(loggedValue);
     }
+    public Product(String lineId, double loggedValue){
+        setLineId(lineId);
+        setLoggedValue(loggedValue);
+    }
     public Product(int logId, double loggedValue){
 
         setLogId(logId);

@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class barChart {
+public class Charts {
     
     public static void createBarChartPage(Stage primaryStage, Scene optionScene, int startLogId, int endLogId){
 
@@ -35,7 +35,7 @@ public class barChart {
         vbox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(vbox, 600, 400);
 
-        primaryStage.setTitle("Total logged value based on LineID");
+        primaryStage.setTitle("Total loggedValue BarChart based on LineID");
         primaryStage.setScene(scene);
 
         backButton.setOnAction(e -> {

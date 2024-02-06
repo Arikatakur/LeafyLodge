@@ -3,25 +3,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class SQLQueries {
 
-    public static void truncateTable(Connection connection) {
-        try {
-            String truncateQuery = "TRUNCATE TABLE Information";
+    // public static void truncateTable(Connection connection) {
+    //     try {
+    //         String truncateQuery = "TRUNCATE TABLE Information";
 
-            try (Statement statement = connection.createStatement()) {
-                statement.executeUpdate(truncateQuery);
+    //         try (Statement statement = connection.createStatement()) {
+    //             statement.executeUpdate(truncateQuery);
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    //         }
+    //     } catch (SQLException e) {
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
 
     public static String MaxLoggedValueRecord(Connection connection) {
 
@@ -101,6 +100,28 @@ public class SQLQueries {
         }
 
         return "No data was found!";
+    }
+            // testing the ObservableList on this Method -->
+    public static ObservableList<Product> lineIdWhereLoggedValueMin(Connection connection){
+        ObservableList<Product> products = FXCollections.observableArrayList();;
+
+        try{
+            String query = "SELECT LineId, LoggedValue FROM INFORMATION WHERE LoggedValue = (SELECT MIN(NULLIF(LoggedValue, 0)) FROM INFORMATION)";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                try(ResultSet resultSet = preparedStatement.executeQuery()){
+                    while(resultSet.next()){
+                        String lineId = resultSet.getString("LineID");
+                        double loggedValue = resultSet.getDouble("LoggedValue");
+                        products.add(new Product(lineId, loggedValue));
+                    }
+                }
+
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return products;
     }
 
     public static String MaxProductionLineID(Connection connection, String startDate, String endDate) {
