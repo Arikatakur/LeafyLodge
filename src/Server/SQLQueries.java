@@ -8,26 +8,10 @@ import javafx.collections.ObservableList;
 
 public class SQLQueries {
 
-    // public static void truncateTable(Connection connection) {
-    //     try {
-    //         String truncateQuery = "TRUNCATE TABLE Information";
-
-    //         try (Statement statement = connection.createStatement()) {
-    //             statement.executeUpdate(truncateQuery);
-
-    //         }
-    //     } catch (SQLException e) {
-    //         e.printStackTrace();
-    //     }
-
-    // }
-
     public static String MaxLoggedValueRecord(Connection connection) {
 
         try {
-            String query = "SELECT LogID, LineID, LogTime, LoggedValue " +
-                           "FROM Information " +
-                           "WHERE LoggedValue = (SELECT MAX(LoggedValue) FROM Information)";
+            String query = "SELECT LogID, LineID, LogTime, LoggedValue FROM Information WHERE LoggedValue = (SELECT MAX(LoggedValue) FROM Information)";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -36,6 +20,7 @@ public class SQLQueries {
                         String lineId = resultSet.getString("LineID");
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
+                        
 
                         return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
                     }
@@ -78,30 +63,6 @@ public class SQLQueries {
         return products;
     }    
 
-    public static String LindIDwhereLoggedValueMin(Connection connection){
-        // Select LineID where LoggedValue is min except the value = 0!
-        try{
-            String query = "SELECT LineID, LoggedValue " +
-                        "FROM Information " +
-                        "WHERE LoggedValue = (SELECT MIN(NULLIF(LoggedValue, 0)) FROM Information)";
-
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
-                try(ResultSet resultSet = preparedStatement.executeQuery()){
-                    while(resultSet.next()){
-                        String lineId = resultSet.getString("LineID");
-                        double loggedValue = resultSet.getDouble("LoggedValue");
-
-                        return "LineID: " + lineId + ", LoggedValue: " + loggedValue;
-                    }
-                }
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-
-        return "No data was found!";
-    }
-            // testing the ObservableList on this Method -->
     public static ObservableList<Product> lineIdWhereLoggedValueMin(Connection connection){
         ObservableList<Product> products = FXCollections.observableArrayList();;
 

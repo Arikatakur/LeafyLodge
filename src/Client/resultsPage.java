@@ -56,15 +56,15 @@ public class resultsPage {
 
                     Button showCharts = new Button("Show Charts");
                     Button showList = new Button("Show List");
-                    
+                    Button backButton2 = new Button("Back");
                     HBox OptionsBox = new HBox(10);
-                    OptionsBox.getChildren().addAll(showCharts, showList, backButton);
+                    OptionsBox.getChildren().addAll(showCharts, showList, backButton2);
                     OptionsBox.setAlignment(Pos.CENTER);
 
                     Scene showScene = new Scene(OptionsBox, 250, 170);
 
                     showCharts.setOnAction(e1 -> {
-                       Charts.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId); 
+                       Charts.createBarChartPage(primaryStage, showScene, startLogId, endLogId); 
                     });
                     showList.setOnAction(e1 -> {
                         primaryStage.setTitle("Total loggedValue List based on LogID");
@@ -80,7 +80,7 @@ public class resultsPage {
                         table = new TableView<>();
                         table.setItems(SQLQueries.TotalLoggedValueForLogID(loginPage.connection,startLogId, endLogId));
                         table.getColumns().addAll(logIdColumn, loggedValueColumn);
-;
+
                         VBox resultVbox = new VBox(table, backButton);
                         Scene resultScene = new Scene (resultVbox, 170, 170);
                         resultVbox.setAlignment(Pos.CENTER);
@@ -91,8 +91,8 @@ public class resultsPage {
                         });
                     }); 
                     
-                    backButton.setOnAction(e1 -> {
-                        primaryStage.setScene(showScene);
+                    backButton2.setOnAction(e1 -> {
+                        primaryStage.setScene(optionsScene);
                     });
 
 
@@ -133,23 +133,23 @@ public class resultsPage {
        primaryStage.show();
    }
 
-    public static void OutputOfMinLoggedValue(Stage primaryStage, Scene optionsScene){
-        primaryStage.setTitle("LineID where logged value is minimum!");
+    // public static void OutputOfMinLoggedValue(Stage primaryStage, Scene optionsScene){
+    //     primaryStage.setTitle("LineID where logged value is minimum!");
 
-        Button backButton = new Button("Back");
-        Label label = new Label(SQLQueries.LindIDwhereLoggedValueMin(loginPage.connection));
-        VBox resultVbox = new VBox(label, backButton);
-        Scene resultScene = new Scene(resultVbox, 300, 70);
-        resultVbox.setAlignment(Pos.CENTER);
-        backButton.setPrefSize(100, 30);
-        primaryStage.setScene(resultScene);
-        primaryStage.show();
+    //     Button backButton = new Button("Back");
+    //     Label label = new Label(SQLQueries.LineIDwhereLoggedValueMin(loginPage.connection));
+    //     VBox resultVbox = new VBox(label, backButton);
+    //     Scene resultScene = new Scene(resultVbox, 300, 70);
+    //     resultVbox.setAlignment(Pos.CENTER);
+    //     backButton.setPrefSize(100, 30);
+    //     primaryStage.setScene(resultScene);
+    //     primaryStage.show();
 
-        backButton.setOnAction(e -> {
-            primaryStage.setScene(optionsScene);
+    //     backButton.setOnAction(e -> {
+    //         primaryStage.setScene(optionsScene);
             
-        });
-    }
+    //     });
+    // }
 
 
     public static void OutputOfMaxProduction(Stage primaryStage, Scene optionsScene){

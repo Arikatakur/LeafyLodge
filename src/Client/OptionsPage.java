@@ -12,11 +12,11 @@ import javafx.stage.Stage;
 public class optionsPage {
      public static void createOptionsPage(Stage primaryStage) {
 
-        
+        Button quitButton = new Button("Quit");
         VBox optionsVBox = new VBox(10);
         optionsVBox.setAlignment(Pos.CENTER);
         Label titleLabel = new Label("Welcome to the Database");
-        optionsVBox.getChildren().addAll(titleLabel);
+        optionsVBox.getChildren().addAll(titleLabel, quitButton);
         Scene optionsScene = new Scene(optionsVBox, 500, 320);
         optionsScene.getStylesheets().addAll("/Style/OptionsPage.css");
         
@@ -44,7 +44,7 @@ public class optionsPage {
         addButton(optionsVBox, "Option 5", "Display when LoggedValue is equal to 0", () -> {
             resultsPage.resultsOfLoggedValueEqualsZero(primaryStage, optionsScene);
         });
-        addButton(optionsVBox, "Quit", "", () -> {
+        quitButton.setOnAction(e -> {
             Server.SQLDatabaseConnection.exitProgram(loginPage.connection);
         });
 
@@ -54,7 +54,6 @@ public class optionsPage {
         primaryStage.setTitle("Database options");
         primaryStage.setScene(optionsScene);
     }
-
     private static void addButton(VBox vbox, String buttonText, String description, Runnable action) {
         HBox buttonBox = new HBox(10); 
         buttonBox.setAlignment(Pos.CENTER); 
