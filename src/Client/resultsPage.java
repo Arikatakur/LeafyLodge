@@ -9,11 +9,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -42,15 +42,21 @@ public class resultsPage {
     public static void OutPutOfTotalLoggedValue(Stage primaryStage, Scene optionsScene){
             primaryStage.setTitle("Input Window");
 
-            TextField startLogIdField = new TextField();
-            TextField endLogIdField = new TextField();
+            ChoiceBox<Integer> startLogIdBox = new ChoiceBox<>();
+            ChoiceBox<Integer> endLogIdBox = new ChoiceBox<>();
+
+            endLogIdBox.getItems().addAll(1,3,4,5,6);
+            endLogIdBox.setValue(1);
+            startLogIdBox.getItems().addAll(1,3,4,5,6);
+            startLogIdBox.setValue(1);
+
 
             Button backButton = new Button("Back");
             Button submitButton = new Button("Submit");
             submitButton.setOnAction(e -> {
                 try {
-                    int startLogId = Integer.parseInt(startLogIdField.getText());
-                    int endLogId = Integer.parseInt(endLogIdField.getText());
+                    int startLogId = startLogIdBox.getValue();
+                    int endLogId = endLogIdBox.getValue();
                     
                     primaryStage.setTitle("Pick an option!");
 
@@ -98,9 +104,6 @@ public class resultsPage {
 
                     primaryStage.setScene(showScene);
                     primaryStage.show();
-
-                    //primaryStage.setTitle("Total logged value based on LineID");
-                    //Charts.createBarChartPage(primaryStage, optionsScene, startLogId, endLogId);
                     
 
                 } catch (NumberFormatException ex) {
@@ -117,40 +120,18 @@ public class resultsPage {
         backButton.setOnAction(e -> {
             primaryStage.setScene(optionsScene); 
        });
-
+       Label startlogIdLabel = new Label("Start LogID:");
+       Label endLogIdLabel = new Label("End LogID:");
        HBox buttonBox = new HBox(10);
        buttonBox.getChildren().addAll(submitButton, backButton);
-   
-       VBox inputLayout = new VBox(
-               new Label("Start LogID:"), startLogIdField,
-               new Label("End LogID:"), endLogIdField,
-               buttonBox 
-       );
+
+       VBox inputLayout = new VBox(startlogIdLabel,startLogIdBox,endLogIdLabel,endLogIdBox,buttonBox);
        inputLayout.setPadding(new Insets(10, 10, 10, 10));
        inputLayout.setSpacing(10);
    
        primaryStage.setScene(new Scene(inputLayout, 250, 170));
        primaryStage.show();
    }
-
-    // public static void OutputOfMinLoggedValue(Stage primaryStage, Scene optionsScene){
-    //     primaryStage.setTitle("LineID where logged value is minimum!");
-
-    //     Button backButton = new Button("Back");
-    //     Label label = new Label(SQLQueries.LineIDwhereLoggedValueMin(loginPage.connection));
-    //     VBox resultVbox = new VBox(label, backButton);
-    //     Scene resultScene = new Scene(resultVbox, 300, 70);
-    //     resultVbox.setAlignment(Pos.CENTER);
-    //     backButton.setPrefSize(100, 30);
-    //     primaryStage.setScene(resultScene);
-    //     primaryStage.show();
-
-    //     backButton.setOnAction(e -> {
-    //         primaryStage.setScene(optionsScene);
-            
-    //     });
-    // }
-
 
     public static void OutputOfMaxProduction(Stage primaryStage, Scene optionsScene){
         primaryStage.setTitle("Production Line Page");

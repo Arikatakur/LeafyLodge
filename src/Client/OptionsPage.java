@@ -27,13 +27,10 @@ public class optionsPage {
         });
 
         addButton(optionsVBox, "Option 2", "Prints the total LoggedValue based on the LogID", () -> {
-            //barChart.createBarChartPage( optionsScene, 1, 6);
-            resultsPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);
-            
+            resultsPage.OutPutOfTotalLoggedValue(primaryStage, optionsScene);            
         });
 
         addButton(optionsVBox, "Option 3", "Prints the LineID when the LoggedValue is minimum", () -> {
-            //resultsPage.OutputOfMinLoggedValue(primaryStage, optionsScene);
             resultsPage.resultOfLineIdMin(primaryStage, optionsScene);
         });
 
@@ -48,7 +45,6 @@ public class optionsPage {
             Server.SQLDatabaseConnection.exitProgram(loginPage.connection);
         });
 
-        // Scene for options page
         
 
         primaryStage.setTitle("Database options");
