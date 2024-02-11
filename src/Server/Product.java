@@ -18,6 +18,7 @@ public class Product {
         this.unitType = "";
     }
 
+
     public Product(int logId, String lineId,
      String logTime, double loggedValue, 
      int cmdType, String description, String unitType ){
@@ -31,6 +32,7 @@ public class Product {
         setUnitType(unitType);
 
     }
+
     public Product(int logId, String lineId,
      String logTime, double loggedValue){
 

@@ -247,10 +247,22 @@ public class resultsPage {
         TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
         loggedValueColumn.setMinWidth(50);
         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+        
+        TableColumn<Product, Integer> cmdTypeColumn = new TableColumn<>("CmdType");
+        cmdTypeColumn.setMinWidth(50);
+        cmdTypeColumn.setCellValueFactory(new PropertyValueFactory<>("cmdType"));
+
+        TableColumn<Product, String> descriptionColumn = new TableColumn<>("Description");
+        descriptionColumn.setMinWidth(70);
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn<Product, String> unitTypeColumn = new TableColumn<>("Unit Type");
+        unitTypeColumn.setMinWidth(50);
+        unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
        
         table = new TableView<>();
         table.setItems(SQLQueries.LoggedValueEqualsZero(loginPage.connection));
-        table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn);
+        table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn, cmdTypeColumn, descriptionColumn, unitTypeColumn);
 
         Button backButton = new Button("Back");
         VBox resultVbox = new VBox(table, backButton);

@@ -117,9 +117,7 @@ public class SQLQueries {
     public static ObservableList<Product> LoggedValueEqualsZero(Connection connection){
             ObservableList<Product> products = FXCollections.observableArrayList();
         try{
-            String query = "SELECT LogID, LineID, LogTime, LoggedValue "+
-                            "FROM Information " + 
-                            "WHERE LoggedValue = 0";
+            String query = "SELECT * FROM INFORMATION WHERE LoggedValue = 0";
 
             try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
                 try(ResultSet resultSet = preparedStatement.executeQuery()){
@@ -128,7 +126,11 @@ public class SQLQueries {
                         String lineId = resultSet.getString("LineID");
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
-                        products.add(new Product(logId, lineId, logTime, loggedValue));                  
+                        int cmdType = resultSet.getInt("CmdType");
+                        String description = resultSet.getString("Description");
+                        String unitType = resultSet.getString("UnitType");
+                        products.add(new Product(logId, lineId, logTime, loggedValue ,cmdType ,description ,unitType));    
+                                  
                     }
                 }
             }
