@@ -261,7 +261,11 @@ public class resultsPage {
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
        
         table = new TableView<>();
+<<<<<<< HEAD
         table.setItems(SQLQueries.LoggedValueEqualsZero(fxml.loginController.connection));
+=======
+        table.setItems(SQLQueries.LoggedValueEqualsZero(loginPage.connection));
+>>>>>>> 3dbcbfec01d9c629316d06a77f37b9515dbd2017
         table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn, cmdTypeColumn, descriptionColumn, unitTypeColumn);
 
         Button backButton = new Button("Back");
