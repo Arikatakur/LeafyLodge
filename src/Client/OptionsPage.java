@@ -17,7 +17,7 @@ public class optionsPage {
         Label titleLabel = new Label("Welcome to the Database");
         optionsVBox.getChildren().addAll(titleLabel);
         Scene optionsScene = new Scene(optionsVBox, 500, 320);
-        optionsScene.getStylesheets().addAll("/Style/OptionsPage.css");
+        //optionsScene.getStylesheets().addAll("/Style/OptionsPage.css");
         
 
 

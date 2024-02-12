@@ -1,7 +1,9 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
     public static void main(String[] args) {
@@ -14,15 +16,25 @@ public class App extends Application {
         launch(args);
     }
 
+    double x, y = 0;
     @Override
-    public void start(Stage primaryStage) {
-        VBox loginVBox = Client.loginPage.createLoginVBox(primaryStage);
-        Scene loginScene = new Scene(loginVBox, 320, 260);
-        loginScene.getStylesheets().addAll("/Style/LoginPage.css");
-        
+    public void start(Stage primaryStage) throws Exception{
 
-        primaryStage.setTitle("Login to Database");
-        primaryStage.setScene(loginScene);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/loginPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        root.setOnMousePressed(mouseEvent -> {
+            x = mouseEvent.getSceneX();
+            y = mouseEvent.getSceneY();
+        });
+
+        root.setOnMouseDragged(mouseEvent -> {
+            primaryStage.setX(mouseEvent.getScreenX() - x);
+            primaryStage.setY(mouseEvent.getScreenY() - y);
+        });
         primaryStage.show();
     }
 }

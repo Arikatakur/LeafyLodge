@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS `Information` (
     `LogID` INT,
     `LineID` VARCHAR(7) CHARACTER SET utf8,

@@ -24,7 +24,7 @@ public class resultsPage {
 
     public static void OutPutOfMaxLoggedValue(Stage primaryStage, Scene optionsScene) {
         primaryStage.setTitle("Max LoggedValue Record!");
-        Label label = new Label(SQLQueries.MaxLoggedValueRecord(Client.loginPage.connection));
+        Label label = new Label(SQLQueries.MaxLoggedValueRecord(fxml.loginController.connection));
         Button backButton = new Button("Back");
         VBox resultVbox = new VBox(label, backButton);
         resultVbox.setAlignment(Pos.CENTER);
@@ -84,7 +84,7 @@ public class resultsPage {
                         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
 
                         table = new TableView<>();
-                        table.setItems(SQLQueries.TotalLoggedValueForLogID(loginPage.connection,startLogId, endLogId));
+                        table.setItems(SQLQueries.TotalLoggedValueForLogID(fxml.loginController.connection,startLogId, endLogId));
                         table.getColumns().addAll(logIdColumn, loggedValueColumn);
 
                         VBox resultVbox = new VBox(table, backButton);
@@ -168,7 +168,7 @@ public class resultsPage {
 
                 Stage stage = new Stage();
                 stage.setTitle("LineID where production was maximum");
-                Label label = new Label(SQLQueries.MaxProductionLineID(loginPage.connection, startDateString, endDateString));
+                Label label = new Label(SQLQueries.MaxProductionLineID(fxml.loginController.connection, startDateString, endDateString));
                 VBox dateVbox = new VBox(label, backButton);
                 Scene scene = new Scene(dateVbox, 500, 50);
                 dateVbox.setAlignment(Pos.CENTER);
@@ -209,7 +209,7 @@ public class resultsPage {
         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
 
         table = new TableView<>();
-        table.setItems(SQLQueries.lineIdWhereLoggedValueMin(loginPage.connection));
+        table.setItems(SQLQueries.lineIdWhereLoggedValueMin(fxml.loginController.connection));
         table.getColumns().addAll(lineIdColumn, loggedValueColumn);
 
         Button backButton = new Button("Back");
@@ -247,10 +247,22 @@ public class resultsPage {
         TableColumn<Product, Double> loggedValueColumn = new TableColumn<>("Logged Value");
         loggedValueColumn.setMinWidth(50);
         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
+        
+        TableColumn<Product, Integer> cmdTypeColumn = new TableColumn<>("CmdType");
+        cmdTypeColumn.setMinWidth(50);
+        cmdTypeColumn.setCellValueFactory(new PropertyValueFactory<>("cmdType"));
+
+        TableColumn<Product, String> descriptionColumn = new TableColumn<>("Description");
+        descriptionColumn.setMinWidth(70);
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn<Product, String> unitTypeColumn = new TableColumn<>("Unit Type");
+        unitTypeColumn.setMinWidth(50);
+        unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
        
         table = new TableView<>();
-        table.setItems(SQLQueries.LoggedValueEqualsZero(loginPage.connection));
-        table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn);
+        table.setItems(SQLQueries.LoggedValueEqualsZero(fxml.loginController.connection));
+        table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn, cmdTypeColumn, descriptionColumn, unitTypeColumn);
 
         Button backButton = new Button("Back");
         VBox resultVbox = new VBox(table, backButton);
