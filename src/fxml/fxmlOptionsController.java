@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class optionsController {
+public class fxmlOptionsController {
     
 
     @FXML
@@ -82,7 +82,7 @@ public class optionsController {
                     Stage loginStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     loginStage.setScene(loginScene);
                     loginStage.show();
-                    loginController.connection.close();
+                    fxmlLoginController.connection.close();
 
                     }catch(IOException e){
                     e.printStackTrace();

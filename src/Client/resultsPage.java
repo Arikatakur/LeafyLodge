@@ -24,7 +24,7 @@ public class resultsPage {
 
     public static void OutPutOfMaxLoggedValue(Stage primaryStage, Scene optionsScene) {
         primaryStage.setTitle("Max LoggedValue Record!");
-        Label label = new Label(SQLQueries.MaxLoggedValueRecord(fxml.loginController.connection));
+        Label label = new Label(SQLQueries.MaxLoggedValueRecord(fxml.fxmlLoginController.connection));
         Button backButton = new Button("Back");
         VBox resultVbox = new VBox(label, backButton);
         resultVbox.setAlignment(Pos.CENTER);
@@ -84,7 +84,7 @@ public class resultsPage {
                         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
 
                         table = new TableView<>();
-                        table.setItems(SQLQueries.TotalLoggedValueForLogID(fxml.loginController.connection,startLogId, endLogId));
+                        table.setItems(SQLQueries.TotalLoggedValueForLogID(fxml.fxmlLoginController.connection,startLogId, endLogId));
                         table.getColumns().addAll(logIdColumn, loggedValueColumn);
 
                         VBox resultVbox = new VBox(table, backButton);
@@ -168,7 +168,7 @@ public class resultsPage {
 
                 Stage stage = new Stage();
                 stage.setTitle("LineID where production was maximum");
-                Label label = new Label(SQLQueries.MaxProductionLineID(fxml.loginController.connection, startDateString, endDateString));
+                Label label = new Label(SQLQueries.MaxProductionLineID(fxml.fxmlLoginController.connection, startDateString, endDateString));
                 VBox dateVbox = new VBox(label, backButton);
                 Scene scene = new Scene(dateVbox, 500, 50);
                 dateVbox.setAlignment(Pos.CENTER);
@@ -209,7 +209,7 @@ public class resultsPage {
         loggedValueColumn.setCellValueFactory(new PropertyValueFactory<>("loggedValue"));
 
         table = new TableView<>();
-        table.setItems(SQLQueries.lineIdWhereLoggedValueMin(fxml.loginController.connection));
+        table.setItems(SQLQueries.lineIdWhereLoggedValueMin(fxml.fxmlLoginController.connection));
         table.getColumns().addAll(lineIdColumn, loggedValueColumn);
 
         Button backButton = new Button("Back");
@@ -261,11 +261,7 @@ public class resultsPage {
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
        
         table = new TableView<>();
-<<<<<<< HEAD
-        table.setItems(SQLQueries.LoggedValueEqualsZero(fxml.loginController.connection));
-=======
-        table.setItems(SQLQueries.LoggedValueEqualsZero(loginPage.connection));
->>>>>>> 3dbcbfec01d9c629316d06a77f37b9515dbd2017
+        table.setItems(SQLQueries.LoggedValueEqualsZero(fxml.fxmlLoginController.connection));
         table.getColumns().addAll(logIdColumn, lineIdColumn, logTimeColumn, loggedValueColumn, cmdTypeColumn, descriptionColumn, unitTypeColumn);
 
         Button backButton = new Button("Back");

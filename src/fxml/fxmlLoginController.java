@@ -23,7 +23,7 @@ import javafx.scene.shape.Line;
 
 import javafx.stage.Stage;
 
-public class loginController {
+public class fxmlLoginController {
     public static Connection connection;
     static Stage primaryStage;
     @FXML
@@ -71,7 +71,6 @@ public class loginController {
         if(event.getSource().equals(btnExit)){
             System.exit(0);
         } else if (event.getSource() == btnHide) {
-            // Handle Hide button click
             Stage stage = (Stage) btnHide.getScene().getWindow();
             stage.setIconified(true);
         } else if (event.getSource().equals(btnLogin)) {
@@ -84,13 +83,16 @@ public class loginController {
                         SQLDatabaseConnection.createDatabaseSQL(connection);
                         SQLDatabaseConnection.useDatabaseSQL(connection);
                         SQLCreateTable.createTable(connection);
+
+                        Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
+                        Scene optionsScene = new Scene(root);
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(optionsScene);
+                        stage.show();
+                        
                     }
 
-                    Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
-                    Scene optionsScene = new Scene(root);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(optionsScene);
-                    stage.show();
+                    
                 }catch(IOException e){
                     e.printStackTrace();
                 }catch(SQLException ex){
