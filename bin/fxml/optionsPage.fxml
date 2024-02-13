@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.fxmlOptionsController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
+      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-border-image-insets: 5; -fx-border-color: white;">
          <top>
             <HBox fx:id="TopHBOX" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
                <children>
@@ -75,7 +75,7 @@
                         <Button fx:id="maxLoggedValueBtn" layoutX="60.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Max Logged Value" textFill="#1e1e1e" />
                         <Label fx:id="maxLoggedValueLabel" layoutX="230.0" layoutY="74.0" prefHeight="17.0" prefWidth="272.0" text="Print the Maximum value of LoggedValue" textFill="WHITE" />
                         <Button fx:id="LoggedValueZeroBtn" layoutX="60.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Logged Value is 0" textFill="#1e1e1e" />
-                        <Label fx:id="ZeroLoggedValueLabel" layoutX="230.0" layoutY="274.0" prefHeight="17.0" prefWidth="308.0" text="Display when LoggedValue is equal to 0" textFill="WHITE" />
+                        <Label fx:id="ZeroLoggedValueLabel" layoutX="230.0" layoutY="274.0" prefHeight="17.0" prefWidth="308.0" text="Display when LoggedValue is equal to Zero" textFill="WHITE" />
                      </children>
                   </Pane>
                </children>

@@ -1,5 +1,6 @@
 package Client;
 
+import fxml.fxmlLoginController;
 import Server.Product;
 import Server.SQLQueries;
 import javafx.collections.ObservableList;
@@ -22,7 +23,7 @@ public class Charts {
         NumberAxis yAxis = new NumberAxis();
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
 
-        ObservableList<Product> productList = SQLQueries.TotalLoggedValueForLogID(fxml.fxmlLoginController.connection,startLogId,endLogId);
+        ObservableList<Product> productList = SQLQueries.TotalLoggedValueForLogID(fxmlLoginController.connection,startLogId,endLogId);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         // for (Product product : productList) {
