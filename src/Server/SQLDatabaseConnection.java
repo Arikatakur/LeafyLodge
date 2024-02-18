@@ -2,6 +2,7 @@ package Server;
 import java.sql.*;
 import javafx.application.Platform;
 
+
 public class SQLDatabaseConnection {
 
     final static String DatabaseName = "LeafyLodge";
@@ -75,9 +76,9 @@ public class SQLDatabaseConnection {
     //                 statement.executeUpdate(sb.toString());
     //                 sb.setLength(0);
     //             }
-    //         }
+    //         }           
 
-            
+    
     //         statement.close();
             
     //     }

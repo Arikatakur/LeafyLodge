@@ -55,7 +55,7 @@
                      </graphic>
                   </Button>
                   <Button fx:id="btnLogin" layoutX="237.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleButtonClicked" style="-fx-background-color: #404040;" text="Login" textFill="WHITE" />
-                  <CheckBox layoutX="89.0" layoutY="321.0" mnemonicParsing="false" style="-fx-mark-highlight-color: green;" text="Stay Signed In" textFill="WHITE" />
+                  <CheckBox fx:id="staySigned" layoutX="89.0" layoutY="321.0" mnemonicParsing="false" style="-fx-mark-highlight-color: #00ff26;" text="Stay Signed In" textFill="WHITE" />
                </children>
             </Pane>
          </children>

@@ -26,19 +26,20 @@ public class Charts {
         ObservableList<Product> productList = SQLQueries.TotalLoggedValueForLogID(fxmlLoginController.connection,startLogId,endLogId);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        // for (Product product : productList) {
-        //     series.getData().add(new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue()));
-        // }
-        for(int i = 0; i < productList.size(); i++){
-            Product product = productList.get(i);
-            XYChart.Data<String, Number> data = new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue());
-            if (data.nodeProperty().get() != null) {
-                data.nodeProperty().get().setStyle("-fx-bar-fill: " + getColorCode(i));
-            }
-            series.getData().add(data);
+        for (Product product : productList) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue()));
         }
+        // for(int i = 0; i < productList.size(); i++){
+        //     Product product = productList.get(i);
+        //     XYChart.Data<String, Number> data = new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue());
+        //     if (data.nodeProperty().get() != null) {
+        //         data.nodeProperty().get().setStyle("-fx-bar-fill: " + getColorCode(i));
+        //     }
+        //     series.getData().add(data);
+        // }
 
         barChart.getData().add(series);
+        barChart.setTitle("barChart for LogID based on Logged Value");
 
         VBox vbox = new VBox(barChart, backButton);
         vbox.setAlignment(Pos.CENTER);
@@ -55,9 +56,9 @@ public class Charts {
 
     }
 
-    private static String getColorCode(int index) {
-        String[] colors = {"#1f78b4", "#33a02c", "#e31a1c", "#ff7f00", "#6a3d9a", "#b15928"};
-        return colors[index % colors.length];
-    }
+    // private static String getColorCode(int index) {
+    //     String[] colors = {"#1f78b4", "#33a02c", "#e31a1c", "#ff7f00", "#6a3d9a", "#b15928"};
+    //     return colors[index % colors.length];
+    // }
 
 }
