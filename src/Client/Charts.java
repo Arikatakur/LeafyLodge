@@ -29,14 +29,6 @@ public class Charts {
         for (Product product : productList) {
             series.getData().add(new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue()));
         }
-        // for(int i = 0; i < productList.size(); i++){
-        //     Product product = productList.get(i);
-        //     XYChart.Data<String, Number> data = new XYChart.Data<>(String.valueOf(product.getLogId()), product.getLoggedValue());
-        //     if (data.nodeProperty().get() != null) {
-        //         data.nodeProperty().get().setStyle("-fx-bar-fill: " + getColorCode(i));
-        //     }
-        //     series.getData().add(data);
-        // }
 
         barChart.getData().add(series);
         barChart.setTitle("barChart for LogID based on Logged Value");
@@ -55,10 +47,5 @@ public class Charts {
         primaryStage.show();
 
     }
-
-    // private static String getColorCode(int index) {
-    //     String[] colors = {"#1f78b4", "#33a02c", "#e31a1c", "#ff7f00", "#6a3d9a", "#b15928"};
-    //     return colors[index % colors.length];
-    // }
 
 }

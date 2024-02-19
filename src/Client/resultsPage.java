@@ -89,7 +89,7 @@ public class resultsPage {
                         table.getColumns().addAll(logIdColumn, loggedValueColumn);
 
                         VBox resultVbox = new VBox(table, backButton);
-                        Scene resultScene = new Scene (resultVbox, 170, 170);
+                        Scene resultScene = new Scene (resultVbox, 200, 200);
                         resultVbox.setAlignment(Pos.CENTER);
 
                         primaryStage.setScene(resultScene);
@@ -195,7 +195,6 @@ public class resultsPage {
         primaryStage.show();
         
     }
-        //test method
     @SuppressWarnings("unchecked")
     public static void resultOfLineIdMin(Stage primaryStage, Scene optionsScene){
         primaryStage.setTitle("Line ID When LoggedValue is Minimum!");

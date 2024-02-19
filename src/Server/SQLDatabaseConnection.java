@@ -1,4 +1,7 @@
 package Server;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import javafx.application.Platform;
 
@@ -7,7 +10,7 @@ public class SQLDatabaseConnection {
 
     final static String DatabaseName = "LeafyLodge";
     public final static String url = "jdbc:mysql://localhost:3306/";
-    public final static String filePath = "C://_saleem/information.sql";
+    public final static String filePath = "sql/information.sql";
 
     public static Connection connectToDatabase(String url, String username, String password) throws SQLException{
         Connection connection = null;
@@ -63,24 +66,36 @@ public class SQLDatabaseConnection {
 
       
     }
+    public static void truncateTable(Connection connection) {
+        try {
+            String truncateQuery = "TRUNCATE TABLE Information";
 
-    // public static void executeSqlScript(Connection connection, String filePath) throws IOException, SQLException {
-    //     try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-    //         String line;
-    //         StringBuilder sb = new StringBuilder();
-    //         Statement statement = connection.createStatement();
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(truncateQuery);
 
-    //         while ((line = reader.readLine()) != null) {
-    //             sb.append(line);
-    //             if (line.endsWith(";")) {
-    //                 statement.executeUpdate(sb.toString());
-    //                 sb.setLength(0);
-    //             }
-    //         }           
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void executeSqlScript(Connection connection, String filePath) throws IOException, SQLException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            StringBuilder sb = new StringBuilder();
+            Statement statement = connection.createStatement();
+
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+                if (line.endsWith(";")) {
+                    statement.executeUpdate(sb.toString());
+                    sb.setLength(0);
+                }
+            }           
 
     
-    //         statement.close();
+            statement.close();
             
-    //     }
-    // }
+        }
+    }
 }

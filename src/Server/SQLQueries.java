@@ -20,7 +20,7 @@ public class SQLQueries {
                         String lineId = resultSet.getString("LineID");
                         String logTime = resultSet.getString("LogTime");
                         double loggedValue = resultSet.getDouble("LoggedValue");
-                        
+
 
                         return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
                     }

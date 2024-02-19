@@ -83,8 +83,8 @@ public class fxmlLoginController {
                         SQLDatabaseConnection.createDatabaseSQL(connection);
                         SQLDatabaseConnection.useDatabaseSQL(connection);
                         SQLCreateTable.createTable(connection);
-                        SQLDatabaseConnection.executeSqlScript(connection,"sql/information.sql");
                         SQLDatabaseConnection.truncateTable(connection);
+                        SQLDatabaseConnection.executeSqlScript(connection,SQLDatabaseConnection.filePath);
 
                         Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
                         Scene optionsScene = new Scene(root);
