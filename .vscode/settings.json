@@ -13,6 +13,6 @@
 		"c:/Program Files/Java/javafx-sdk-21.0.2/lib/javafx.swing.jar",
 		"c:/Program Files/Java/javafx-sdk-21.0.2/lib/javafx.web.jar",
 		"c:/Program Files/Java/javafx-sdk-21.0.2/lib/javafx-swt.ja",
-		"c:\\Program Files (x86)\\MySQL\\MySQL Connectors\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar"
+		"c:\\Program Files\\Java\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar"
 	]
 }
