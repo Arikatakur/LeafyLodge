@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.generalController">
+   <children>
+      <BorderPane fx:id="mainLayout" prefHeight="400.0" prefWidth="600.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css">
+         <left>
+            <VBox prefHeight="398.0" prefWidth="190.0" style="-fx-background-color: #2b2b2b;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="402.0" prefWidth="190.0">
+                     <children>
+                        <VBox alignment="CENTER" layoutY="14.0" prefHeight="114.0" prefWidth="190.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Users/user/Downloads/leafylodge-high-resolution-logo-transparent%20(2).png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="root" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="158.0" prefHeight="187.0" prefWidth="189.0" spacing="15.0" stylesheets="@../Style/css/style.css">
+                           <children>
+                              <HBox fx:id="HomeHBox" alignment="CENTER" onMouseClicked="#handleHomeClicked" prefHeight="40.0" prefWidth="200.0" stylesheets="@../Style/css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="36.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Users/user/Downloads/house.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="20.0" prefWidth="111.0" text="  Home" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="selected" />
+                                    <String fx:value="selected-border" />
+                                 </styleClass>
+                              </HBox>
+                              <HBox fx:id="optionsHBox" alignment="CENTER" onMouseClicked="#handleOptionsClicked" prefHeight="40.0" prefWidth="200.0" styleClass="selected" stylesheets="@../Style/css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="36.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Users/user/Downloads/menu.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="20.0" prefWidth="111.0" text="  Menu" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="profilehbox" alignment="CENTER" onMouseClicked="#handleProfileClicked" prefHeight="40.0" prefWidth="200.0" styleClass="selected" stylesheets="@../Style/css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Users/user/Downloads/user%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="20.0" prefWidth="111.0" text=" Profile" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="settingshbox" alignment="CENTER" onMouseClicked="#handleSettingsClicked" prefHeight="40.0" prefWidth="200.0" styleClass="selected" stylesheets="@../Style/css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Users/user/Downloads/process.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="20.0" prefWidth="111.0" text=" Settings" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane fx:id="centerPane" prefHeight="398.0" prefWidth="402.0" styleClass="base-color" stylesheets="@../Style/css/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="398.0" prefWidth="402.0">
+                     <center>
+                        <VBox alignment="CENTER" prefHeight="398.0" prefWidth="402.0" styleClass="base-color" stylesheets="@../Style/css/style.css" BorderPane.alignment="CENTER">
+                           <children>
+                              <Pane prefHeight="398.0" prefWidth="402.0">
+                                 <children>
+                                    <Label layoutX="155.0" layoutY="145.0" text="Welcome" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="181.0" fitWidth="331.0" layoutX="40.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Users/user/Downloads/183874-540p--unscreen.gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children></Pane>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

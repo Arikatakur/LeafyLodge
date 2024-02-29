@@ -6,25 +6,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.fxmlOptionsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="402.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.fxmlOptionsController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-border-image-insets: 5; -fx-border-color: white;">
-         <top>
-            <HBox fx:id="TopHBOX" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="398.0" prefWidth="402.0">
+         <center>
+            <VBox fx:id="optionsVBOX" prefHeight="398.0" prefWidth="408.0" style="-fx-background-color: #1e1e1e;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="50.0" prefWidth="602.0">
+                  <Pane fx:id="centerVBoxPane" prefHeight="398.0" prefWidth="402.0">
                      <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Style/icons/dbLogo.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="btnExit" layoutX="552.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleButtonClicked" style="-fx-background-color: #7b7b7b;">
+                        <Button fx:id="btnMinLineID" layoutX="15.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 30;" styleClass="radi" text="Minimum LineID" textFill="#1e1e1e" />
+                        <Label fx:id="minLineIDLabel" layoutX="80.0" layoutY="235.0" prefHeight="17.0" prefWidth="314.0" text="Prints the LineID when the LoggedValue is minimum" textFill="WHITE" />
+                        <Button fx:id="btnMaxProduction" layoutX="15.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 30;" text="Max Production" textFill="#1e1e1e" />
+                        <Label fx:id="dateLabel" layoutX="80.0" layoutY="305.0" prefHeight="17.0" prefWidth="310.0" text="Pick a date to display where production was maximum" textFill="WHITE" />
+                        <Button fx:id="btnTotalLoggedValue" layoutX="15.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 30;" text="Total Logged Value" textFill="#1e1e1e" />
+                        <Label fx:id="totalLoggedValueLabel" layoutX="80.0" layoutY="165.0" prefHeight="17.0" prefWidth="272.0" text="Prints the total LoggedValue based on the LogID" textFill="WHITE" />
+                        <Button fx:id="maxLoggedValueBtn" layoutX="15.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 30;" text="Max Logged Value" textFill="#1e1e1e" />
+                        <Label fx:id="maxLoggedValueLabel" layoutX="80.0" layoutY="95.0" prefHeight="17.0" prefWidth="243.0" text="Print the Maximum value of LoggedValue" textFill="WHITE" />
+                        <Button fx:id="LoggedValueZeroBtn" layoutX="15.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 30;" text="Logged Value is 0" textFill="#1e1e1e" />
+                        <Label fx:id="ZeroLoggedValueLabel" layoutX="80.0" layoutY="375.0" prefHeight="17.0" prefWidth="308.0" text="Display when LoggedValue is equal to Zero" textFill="WHITE" />
+                        <Button fx:id="btnExit" layoutX="360.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #7b7b7b;">
                            <graphic>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -33,7 +36,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnMinimize" layoutX="510.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleButtonClicked" style="-fx-background-color: #7b7b7b;">
+                        <Button fx:id="btnMinimize" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #7b7b7b;">
                            <graphic>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -42,7 +45,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnBack" layoutX="470.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleButtonClicked" style="-fx-background-color: #7b7b7b;">
+                        <Button fx:id="btnBack" layoutX="281.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonClicked" style="-fx-background-color: #7b7b7b;">
                            <graphic>
                               <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -51,31 +54,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="welcomeLabel" layoutX="66.0" layoutY="10.0" prefHeight="31.0" prefWidth="328.0" text="Welcome @root" textAlignment="CENTER" textFill="#f5f5f5">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-               </children>
-            </HBox>
-         </top>
-         <center>
-            <VBox fx:id="optionsVBOX" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane prefHeight="356.0" prefWidth="600.0">
-                     <children>
-                        <Button fx:id="btnMinLineID" layoutX="60.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Minimum LineID" textFill="#1e1e1e" />
-                        <Label fx:id="minLineIDLabel" layoutX="230.0" layoutY="179.0" prefHeight="17.0" prefWidth="314.0" text="Prints the LineID when the LoggedValue is minimum" textFill="WHITE" />
-                        <Button fx:id="btnMaxProduction" layoutX="60.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Max Production" textFill="#1e1e1e" />
-                        <Label fx:id="dateLabel" layoutX="230.0" layoutY="224.0" prefHeight="17.0" prefWidth="310.0" text="Pick a date to display where production was maximum" textFill="WHITE" />
-                        <Button fx:id="btnTotalLoggedValue" layoutX="60.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Total Logged Value" textFill="#1e1e1e" />
-                        <Label fx:id="totalLoggedValueLabel" layoutX="230.0" layoutY="124.0" prefHeight="17.0" prefWidth="272.0" text="Prints the total LoggedValue based on the LogID" textFill="WHITE" />
-                        <Button fx:id="maxLoggedValueBtn" layoutX="60.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Max Logged Value" textFill="#1e1e1e" />
-                        <Label fx:id="maxLoggedValueLabel" layoutX="230.0" layoutY="74.0" prefHeight="17.0" prefWidth="272.0" text="Print the Maximum value of LoggedValue" textFill="WHITE" />
-                        <Button fx:id="LoggedValueZeroBtn" layoutX="60.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleButtonClicked" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #7b7b7b;" text="Logged Value is 0" textFill="#1e1e1e" />
-                        <Label fx:id="ZeroLoggedValueLabel" layoutX="230.0" layoutY="274.0" prefHeight="17.0" prefWidth="308.0" text="Display when LoggedValue is equal to Zero" textFill="WHITE" />
                      </children>
                   </Pane>
                </children>

@@ -1,0 +1,38 @@
+.selected-border{
+    -fx-border-color: #fff;
+    -fx-border-width: 0 3 0 0;
+    border-color: #fff;
+    border-width: 0 3 0 0;
+}
+.selected:hover{
+    -fx-background-color: #787878;
+    background-color: #787878;
+}
+.Border-Pane{
+    -fx-border-image-insets: 5;
+    -fx-border-color: white;
+    border-color: white;
+}
+.base-color{
+    -fx-background-color:  #1e1e1e;
+    background-color:  #1e1e1e;
+}
+.secondary-color{
+    -fx-background-color: #ffff;
+    background-color: #ffff;
+}
+.settings-button{
+    -fx-background-color: #7b7b7b;
+    background-color: #7b7b7b;
+    -fx-background-radius: 30;
+}
+.text-input{
+    -fx-background-color: rgb(173, 170, 170, 0);
+    background-color: rgba(173, 170, 170, 0);
+    -fx-border-width: 0 0 1 0;
+    border-width: 0 0 1 0;
+    -fx-border-color: #7b7b7b;
+    border-color: #7b7b7b;
+    -fx-text-fill: #fff;
+    
+}

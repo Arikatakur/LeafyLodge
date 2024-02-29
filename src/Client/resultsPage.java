@@ -2,9 +2,9 @@ package Client;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import fxml.fxmlLoginController;
 
 import Server.*;
+import fxml.fxmlLoginController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -111,7 +111,7 @@ public class resultsPage {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Input Error");
                     alert.setHeaderText("Invalid Input");
-                    alert.setContentText("Please enter valid integer values for Log IDs.");
+                    alert.setContentText("Please enter a valid username or password.");
                     alert.showAndWait();
                 }
             });

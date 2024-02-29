@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,9 +21,6 @@ public class fxmlOptionsController {
 
     @FXML
     private Button LoggedValueZeroBtn;
-
-    @FXML
-    private HBox TopHBOX;
 
     @FXML
     private Label ZeroLoggedValueLabel;
@@ -47,6 +44,9 @@ public class fxmlOptionsController {
     private Button btnTotalLoggedValue;
 
     @FXML
+    private Pane centerVBoxPane;
+
+    @FXML
     private Label dateLabel;
 
     @FXML
@@ -63,9 +63,6 @@ public class fxmlOptionsController {
 
     @FXML
     private Label totalLoggedValueLabel;
-
-    @FXML
-    private Label welcomeLabel;
 
     @FXML
     void handleButtonClicked(ActionEvent event) throws IOException, SQLException{
@@ -106,8 +103,42 @@ public class fxmlOptionsController {
                 Stage stage1 = (Stage) btnMinimize.getScene().getWindow();
                 stage1.setIconified(true);
         }
-    
+        
     }   
-
-
 }
+//     @FXML
+//     private void handleProfileClicked(MouseEvent event){
+//         // try {
+//         //     Node profilePage = FXMLLoader.load(getClass().getResource("ProfilePage.fxml"));
+//         //     centerPane.getChildren().clear();
+//         //     centerPane.getChildren().add(profilePage);
+//         // } catch (IOException e) {
+//         //     e.printStackTrace();
+//         // }
+//     }
+
+//     @FXML
+//     private void handleSettingsClicked(MouseEvent event){
+//         // try{
+//         //     FXMLLoader loader = FXMLLoader.load(getClass().getResource("OptionsPage.fxml"));
+//         //     Parent optionsPageRoot = loader.load();
+//         //     Node optionsPane = (Node) optionsPageRoot.lookup("#optionsVBOX");
+//         //     if (optionsPane != null) {
+//         //     centerPane.getChildren().clear();
+//         //     centerPane.getChildren().add(optionsPane);
+//         //     }
+//         // }catch(IOException e){
+//         //     e.printStackTrace();
+//         // }
+//         try {
+//             Node settings = FXMLLoader.load(getClass().getResource("settings.fxml"));
+//             centerPane.getChildren().clear();
+//             centerPane.getChildren().add(settings);
+//         } catch (IOException e) {
+//             e.printStackTrace();
+//         }
+//     }
+//     @FXML
+//     private void handleOptionsClicked(MouseEvent event){}
+
+// }

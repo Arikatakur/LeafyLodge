@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import Server.Exceptions;
 import Server.SQLCreateTable;
 import Server.SQLDatabaseConnection;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -67,7 +69,8 @@ public class fxmlLoginController {
     
 
     @FXML
-    void handleButtonClicked(ActionEvent event)  {
+    void handleButtonClicked(ActionEvent event) throws Exceptions {
+        Alert alert;
         if(event.getSource().equals(btnExit)){
             System.exit(0);
         } else if (event.getSource() == btnHide) {
@@ -86,7 +89,7 @@ public class fxmlLoginController {
                         SQLDatabaseConnection.truncateTable(connection);
                         SQLDatabaseConnection.executeSqlScript(connection,SQLDatabaseConnection.filePath);
 
-                        Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("general.fxml"));
                         Scene optionsScene = new Scene(root);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setScene(optionsScene);
@@ -97,8 +100,21 @@ public class fxmlLoginController {
                     
                 }catch(IOException e){
                     e.printStackTrace();
-                }catch(SQLException ex){
-                    ex.printStackTrace();
+                } catch (SQLException e) {
+                    if (e.getMessage().contains("Access denied for user")) {
+                        // Show an alert with a custom message
+                        alert = errorAlert("Input Error", "Invalid Input", "Please enter a valid username or password.");
+                        alert.showAndWait();
+                    } else {
+                        alert = errorAlert("Database Error", null , "A database error occurred. Please contact support.");
+                        alert.showAndWait();
+
+                    }
+                } catch (Exception e) {
+                    // Handle non-SQL exceptions
+                    alert = errorAlert("Input Error", "Invalid Input" , "Please enter a valid username or password.");
+                    alert.showAndWait();
+
                 }
                     
              
@@ -106,6 +122,15 @@ public class fxmlLoginController {
                 
         }
 
+    }
+    public static Alert errorAlert(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        // alert.showAndWait();
+
+        return alert;
     }
 
 }

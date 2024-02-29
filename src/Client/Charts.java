@@ -1,8 +1,8 @@
 package Client;
 
-import fxml.fxmlLoginController;
 import Server.Product;
 import Server.SQLQueries;
+import fxml.fxmlLoginController;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
