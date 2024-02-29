@@ -24,7 +24,7 @@
                         </Label>
                         <ImageView fitHeight="181.0" fitWidth="331.0" layoutX="40.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../Users/user/Downloads/183874-540p--unscreen.gif" />
+                              <Image url="@../Style/icons/welcome_animation.gif" />
                            </image>
                         </ImageView>
                      </children>

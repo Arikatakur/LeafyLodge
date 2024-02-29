@@ -17,7 +17,7 @@
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Users/user/Downloads/leafylodge-high-resolution-logo-white-transparent.png" />
+                        <Image url="@../Style/icons/leafylodge-white.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="Logout" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonClicked" styleClass="settings-button" stylesheets="@../Style/css/style.css" text="Logout" textFill="#1e1e1e">
