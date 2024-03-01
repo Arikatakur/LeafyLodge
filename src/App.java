@@ -13,7 +13,7 @@ public class App extends Application {
             Saleem Yousef - 213523418
             Romaisa Suliman - 207674243
         */
-        
+
         launch(args);
     }
 
