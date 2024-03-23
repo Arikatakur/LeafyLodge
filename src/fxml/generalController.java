@@ -5,10 +5,12 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class generalController {
 
@@ -29,6 +31,22 @@ public class generalController {
 
     @FXML
     private HBox settingshbox;
+    
+    @FXML
+    private Button btnHide;
+
+    @FXML
+    private Button btnExit;
+
+    @FXML
+    private void handleButtonClicked(MouseEvent event){
+        if(event.getSource().equals(btnExit)){
+            System.exit(0);
+        } else if (event.getSource().equals(btnHide)) {
+            Stage stage = (Stage) btnHide.getScene().getWindow();
+            stage.setIconified(true);
+        }
+    }
 
     @FXML
     private void handleHomeClicked(MouseEvent event){
@@ -50,15 +68,15 @@ public class generalController {
         }catch(IOException e){
             e.printStackTrace();
         }
-        
+
     }
 
     @FXML
     private void handleProfileClicked(MouseEvent event){
         try{
-            Node menu = FXMLLoader.load(getClass().getResource("profile.fxml"));
+            Node profile = FXMLLoader.load(getClass().getResource("profile.fxml"));
             centerPane.getChildren().clear();
-            centerPane.getChildren().add(menu);
+            centerPane.getChildren().add(profile);
         }catch(IOException e){
             e.printStackTrace();
         }

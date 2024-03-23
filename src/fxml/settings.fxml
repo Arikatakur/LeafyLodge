@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="settingsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.settingsController">
+<AnchorPane fx:id="settingsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="809.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.settingsController">
    <children>
-      <BorderPane prefHeight="398.0" prefWidth="402.0">
+      <BorderPane prefHeight="398.0" prefWidth="809.0">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" stylesheets="@../Style/css/style.css" BorderPane.alignment="CENTER_RIGHT">
                <children>
@@ -28,10 +28,37 @@
                </children>
                <styleClass>
                   <String fx:value="background-color" />
+                  <String fx:value="Border-Pane" />
                   <String fx:value="base-color" />
                </styleClass>
             </VBox>
          </center>
       </BorderPane>
+      <Button fx:id="btnHide" layoutX="748.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnExit" layoutX="778.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0" textFill="#7b7b7b">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected2" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>

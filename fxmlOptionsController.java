@@ -1,7 +1,6 @@
 package fxml;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import Client.resultsPage;
 import Server.Product;
@@ -90,23 +89,33 @@ public class fxmlOptionsController {
     @FXML
     private MenuButton menu;
 
+    
+
+    // @FXML
+    // void handleButtonClicked(ActionEvent event) throws IOException, SQLException{
+
+    //                 Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
+    //                 Scene optionsScene = new Scene(root);
+    //                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // }
 
     @FXML
-    void handleButtonClicked(ActionEvent event) throws IOException, SQLException{
-                    Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
-                    Scene optionsScene = new Scene(root);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    private void handleMaxLogged(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("optionsPage.fxml"));
+        Scene optionsScene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        resultsPage.OutPutOfMaxLoggedValue(stage, optionsScene);
+    }
+    
 
-                    if (event.getSource().equals(maxLoggedMenu)) {
-                        resultsPage.OutPutOfMaxLoggedValue(stage, optionsScene);
-                    }else if(event.getSource().equals(maxProductionMenu)){
-                        resultsPage.OutputOfMaxProduction(stage, optionsScene);
-                    }else if(event.getSource().equals(minLoggedMenu)){
-                        resultsPage.resultOfLineIdMin(stage,optionsScene);
-                        }
-                        menu.
-                    }
-
+            // @FXML
+            // void initialize() {
+            //     maxLoggedMenu.setOnAction(event -> resultsPage.OutPutOfMaxLoggedValue(stage, null));
+            //     maxProductionMenu.setOnAction(event -> handleMaxProduction());
+            //     minLoggedMenu.setOnAction(event -> handleMinLogged());
+            //     totalLoggedMenu.setOnAction(event -> handleTotalLogged());
+            //     zeroLoggedMenu.setOnAction(event -> handleZeroLogged());
+            // }
         // if(event.getSource().equals(btnExit)){
         //     System.exit(0);
         // }else if(event.getSource().equals(btnBack)){
@@ -142,7 +151,6 @@ public class fxmlOptionsController {
         // }
         
     // }   
-}
 //     @FXML
 //     private void handleProfileClicked(MouseEvent event){
 //         // try {
@@ -178,4 +186,4 @@ public class fxmlOptionsController {
 //     @FXML
 //     private void handleOptionsClicked(MouseEvent event){}
 
-// }
+}

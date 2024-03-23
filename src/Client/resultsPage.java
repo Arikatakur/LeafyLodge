@@ -23,7 +23,8 @@ import javafx.stage.Stage;
 
 public class resultsPage {
 
-    public static void OutPutOfMaxLoggedValue(Stage primaryStage, Scene optionsScene) {
+    public static void OutPutOfMaxLoggedValue( Scene optionsScene) {
+        Stage primaryStage = new Stage();
         primaryStage.setTitle("Max LoggedValue Record!");
         Label label = new Label(SQLQueries.MaxLoggedValueRecord(fxmlLoginController.connection));
         Button backButton = new Button("Back");
@@ -40,7 +41,8 @@ public class resultsPage {
     }
 
     @SuppressWarnings("unchecked")
-    public static void OutPutOfTotalLoggedValue(Stage primaryStage, Scene optionsScene){
+    public static void OutPutOfTotalLoggedValue(Scene optionsScene){
+            Stage primaryStage = new Stage();
             primaryStage.setTitle("Input Window");
 
             ChoiceBox<Integer> startLogIdBox = new ChoiceBox<>();

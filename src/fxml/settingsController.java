@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -20,6 +21,22 @@ public class settingsController {
 
     @FXML
     private AnchorPane settingsPane;
+
+    @FXML
+    private Button btnHide;
+
+    @FXML
+    private Button btnExit;
+
+    @FXML
+    private void handleButtonClicked(MouseEvent event){
+        if(event.getSource().equals(btnExit)){
+            System.exit(0);
+        } else if (event.getSource().equals(btnHide)) {
+            Stage stage = (Stage) btnHide.getScene().getWindow();
+            stage.setIconified(true);
+        }
+    }
 
     @FXML
     void handleButtonClicked(ActionEvent event) throws SQLException {

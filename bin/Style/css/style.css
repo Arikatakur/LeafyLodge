@@ -8,6 +8,11 @@
     -fx-background-color: #787878;
     background-color: #787878;
 }
+.selected2:hover{
+    -fx-background-color: #d45858;
+    background-color: #d45858;
+
+}
 .Border-Pane{
     -fx-border-image-insets: 5;
     -fx-border-color: white;

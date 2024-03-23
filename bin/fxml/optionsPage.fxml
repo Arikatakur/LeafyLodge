@@ -2,53 +2,87 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="402.0" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.fxmlOptionsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="809.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.textController">
    <children>
-      <BorderPane prefHeight="398.0" prefWidth="402.0">
+      <BorderPane prefHeight="398.0" prefWidth="809.0" stylesheets="@../Style/css/style.css">
          <top>
-            <MenuButton fx:id="menu" mnemonicParsing="false" styleClass="secondary-color" stylesheets="@../Style/css/style.css" text="  Menu Options  " textFill="WHITE" BorderPane.alignment="CENTER">
+            <MenuButton lineSpacing="5.0" mnemonicParsing="false" styleClass="settings-button" text="                  Menu            " textAlignment="CENTER" BorderPane.alignment="CENTER">
               <items>
-                <MenuItem fx:id="maxLoggedMenu" mnemonicParsing="false" onAction="#handleButtonClicked" text="MaxLoggedValue" />
-                  <MenuItem fx:id="totalLoggedMenu" mnemonicParsing="false" onAction="#handleButtonClicked" text="TotalLoggedValue" />
-                <MenuItem fx:id="minLoggedMenu" mnemonicParsing="false" onAction="#handleButtonClicked" text="MinimumLineID" />
-                  <MenuItem fx:id="maxProductionMenu" mnemonicParsing="false" text="MaxProduction" />
-                  <MenuItem fx:id="zeroLoggedMenu" mnemonicParsing="false" onAction="#handleButtonClicked" text="LoggedValueEqualsZero" />
+                <MenuItem fx:id="maxLoggedItem" mnemonicParsing="false" onAction="#handleMaxLogged" text="Maximum LoggedValue" />
+                <MenuItem fx:id="totalLoggedItem" mnemonicParsing="false" onAction="#handleTotalLogged" text="Total LoggedValue" />
+                  <MenuItem mnemonicParsing="false" text="Max Production" />
+                  <MenuItem mnemonicParsing="false" text="Minimum LineID" />
+                  <MenuItem mnemonicParsing="false" text="LoggedValue Equals Zero" />
               </items>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets top="5.0" />
                </BorderPane.margin>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
             </MenuButton>
          </top>
-         <center>
-            <TableView fx:id="tableView" onSort="#handleButtonClicked" prefHeight="303.0" prefWidth="375.0" styleClass="secondary-color" BorderPane.alignment="CENTER">
+         <left>
+            <TableView prefHeight="327.0" prefWidth="367.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
                <BorderPane.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="24.0" left="15.0" top="15.0" />
                </BorderPane.margin>
             </TableView>
-         </center>
-         <bottom>
-            <ProgressBar prefWidth="200.0" progress="0.0" BorderPane.alignment="CENTER" />
-         </bottom>
+         </left>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="Border-Pane" />
+         </styleClass>
+         <right>
+            <BarChart prefHeight="366.0" prefWidth="413.0" BorderPane.alignment="CENTER">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </right>
       </BorderPane>
+      <Button fx:id="btnHide" layoutX="748.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnExit" layoutX="778.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0" textFill="#7b7b7b">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected2" />
+         </styleClass>
+      </Button>
    </children>
-   <styleClass>
-      <String fx:value="Border-Pane" />
-      <String fx:value="base-color" />
-   </styleClass>
 </AnchorPane>
