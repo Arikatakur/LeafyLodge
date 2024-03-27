@@ -2,9 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -15,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="809.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.textController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="809.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.menuController">
    <children>
       <BorderPane prefHeight="398.0" prefWidth="809.0" stylesheets="@../Style/css/style.css">
          <top>
@@ -23,9 +20,9 @@
               <items>
                 <MenuItem fx:id="maxLoggedItem" mnemonicParsing="false" onAction="#handleMaxLogged" text="Maximum LoggedValue" />
                 <MenuItem fx:id="totalLoggedItem" mnemonicParsing="false" onAction="#handleTotalLogged" text="Total LoggedValue" />
-                  <MenuItem mnemonicParsing="false" text="Max Production" />
-                  <MenuItem mnemonicParsing="false" text="Minimum LineID" />
-                  <MenuItem mnemonicParsing="false" text="LoggedValue Equals Zero" />
+                  <MenuItem fx:id="maxProduction" mnemonicParsing="false" onAction="#handleMaxProduction" text="Max Production" />
+                  <MenuItem fx:id="minLineId" mnemonicParsing="false" onAction="#handleMinLineId" text="Minimum LineID" />
+                  <MenuItem fx:id="loggedValueZero" mnemonicParsing="false" onAction="#handleLoggedValueZero" text="LoggedValue Equals Zero" />
               </items>
                <BorderPane.margin>
                   <Insets top="5.0" />
@@ -33,10 +30,15 @@
             </MenuButton>
          </top>
          <left>
-            <TableView prefHeight="327.0" prefWidth="367.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" prefHeight="327.0" prefWidth="775.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="logId" prefWidth="117.0" text="LogId" />
+                <TableColumn fx:id="lineId" prefWidth="82.0" text="LineID" />
+                  <TableColumn fx:id="logTime" prefWidth="179.0" text="LogTime" />
+                  <TableColumn fx:id="loggedValue" prefWidth="107.0" text="LoggedValue" />
+                  <TableColumn fx:id="cmdType" prefWidth="66.0" text="CmdType" />
+                  <TableColumn fx:id="description" minWidth="0.0" prefWidth="124.0" text="Description" />
+                  <TableColumn fx:id="unitType" minWidth="0.0" prefWidth="99.0" text="UnitType" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="24.0" left="15.0" top="15.0" />
@@ -47,16 +49,6 @@
             <String fx:value="base-color" />
             <String fx:value="Border-Pane" />
          </styleClass>
-         <right>
-            <BarChart prefHeight="366.0" prefWidth="413.0" BorderPane.alignment="CENTER">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-         </right>
       </BorderPane>
       <Button fx:id="btnHide" layoutX="748.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0">
          <graphic>

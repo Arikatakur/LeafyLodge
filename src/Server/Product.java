@@ -95,4 +95,10 @@ public class Product {
     public void setLoggedValue(double loggedValue) {
         this.loggedValue = loggedValue;
     }
+
+
+    public Object doubleProperty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'doubleProperty'");
+    }
 }

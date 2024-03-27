@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
@@ -30,6 +31,9 @@ public class fxmlLoginController {
     static Stage primaryStage;
     @FXML
     private Pane VboxALL;
+
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private Label WebsiteLabel;
@@ -115,22 +119,40 @@ public class fxmlLoginController {
                     alert = errorAlert("Input Error", "Invalid Input" , "Please enter a valid username or password.");
                     alert.showAndWait();
 
-                }
-                    
-             
-            
-                
+                }   
+            }
+        }
+        public static Alert errorAlert(String title, String header, String content){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(title);
+            alert.setHeaderText(header);
+            alert.setContentText(content);
+            // alert.showAndWait();
+
+            return alert;
         }
 
-    }
-    public static Alert errorAlert(String title, String header, String content){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        // alert.showAndWait();
-
-        return alert;
+        @FXML
+    public void initialize() {
+        makeStageDraggable();
     }
 
-}
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    private void makeStageDraggable() {
+        // Assuming mainLayout is the container you wish to attach the drag functionality to
+        mainPane.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        mainPane.setOnMouseDragged(event -> {
+            // Get the stage
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Update the stage position based on the drag
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
+    }
+    }
