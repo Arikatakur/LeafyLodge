@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 
 public class SQLQueries {
 
-    public static String MaxLoggedValueRecord(Connection connection) {
+    public static String MaxLoggedValueRecords(Connection connection) {
 
         try {
             String query = "SELECT LogID, LineID, LogTime, LoggedValue FROM Information WHERE LoggedValue = (SELECT MAX(LoggedValue) FROM Information)";
@@ -30,6 +30,31 @@ public class SQLQueries {
             e.printStackTrace();
         }
         return "No data was found";
+    }
+
+    public static ObservableList<Product>  MaxLoggedValueRecord(Connection connection) {
+        ObservableList<Product> products = FXCollections.observableArrayList();;
+
+        try {
+            String query = "SELECT LogID, LineID, LogTime, LoggedValue FROM Information WHERE LoggedValue = (SELECT MAX(LoggedValue) FROM Information)";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        int logId = resultSet.getInt("LogID");
+                        String lineId = resultSet.getString("LineID");
+                        String logTime = resultSet.getString("LogTime");
+                        double loggedValue = resultSet.getDouble("LoggedValue");
+
+                        products.add(new Product(logId,lineId,logTime,loggedValue));
+                        // return "LogID: " + logId + ", LineID: " + lineId + ", LogTime: " + logTime + ", LoggedValue: " + loggedValue;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
     }
 
     

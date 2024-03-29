@@ -5,8 +5,7 @@ public class Product {
     private int logId, cmdType;
     private String lineId, logTime, description, unitType;
     private double loggedValue;
-    
-
+    private String threadNumber;
 
     public Product(){
         this.logId = 0;
@@ -52,7 +51,12 @@ public class Product {
     }
 
 
-
+    public String getThreadNumber() {
+        return threadNumber;
+    }
+    public void setThreadNumber(String threadNumber) {
+        this.threadNumber = threadNumber;
+    }    
     public int getLogId() {
         return logId;
     }
@@ -95,4 +99,6 @@ public class Product {
     public void setLoggedValue(double loggedValue) {
         this.loggedValue = loggedValue;
     }
+
+
 }

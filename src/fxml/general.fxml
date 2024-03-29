@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.generalController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.generalController">
    <children>
       <BorderPane fx:id="mainLayout" prefHeight="400.0" prefWidth="1000.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css">
          <left>
-            <VBox prefHeight="398.0" prefWidth="190.0" style="-fx-background-color: #2b2b2b;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="396.0" prefWidth="190.0" style="-fx-background-color: #2b2b2b;" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="402.0" prefWidth="190.0">
                      <children>
@@ -34,7 +34,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="158.0" prefHeight="187.0" prefWidth="189.0" spacing="15.0" stylesheets="@../Style/css/style.css">
+                        <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="151.0" prefHeight="226.0" prefWidth="189.0" spacing="15.0" stylesheets="@../Style/css/style.css">
                            <children>
                               <HBox fx:id="HomeHBox" alignment="CENTER" onMouseClicked="#handleHomeClicked" prefHeight="40.0" prefWidth="200.0" styleClass="selected" stylesheets="@../Style/css/style.css">
                                  <children>
@@ -58,6 +58,20 @@
                                        </image>
                                     </ImageView>
                                     <Label prefHeight="20.0" prefWidth="111.0" text="  Menu" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="multiThreadHBox" alignment="CENTER" onMouseClicked="#handleThreadClicked" prefHeight="40.0" prefWidth="200.0" styleClass="selected" stylesheets="@../Style/css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="36.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Style/icons/multithreads.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="20.0" prefWidth="111.0" text="  Multi Threads" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

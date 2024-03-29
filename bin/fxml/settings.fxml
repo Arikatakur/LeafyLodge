@@ -20,7 +20,7 @@
                         <Image url="@../Style/icons/leafylodge-white.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Logout" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonClicked" styleClass="settings-button" stylesheets="@../Style/css/style.css" text="Logout" textFill="#1e1e1e">
+                  <Button fx:id="Logout" alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutClicked" styleClass="settings-button" stylesheets="@../Style/css/style.css" text="Logout" textFill="#1e1e1e">
                      <font>
                         <Font size="14.0" />
                      </font>

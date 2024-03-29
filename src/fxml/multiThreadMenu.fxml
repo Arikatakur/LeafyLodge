@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="809.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.multiThreadController">
+   <children>
+      <BorderPane prefHeight="398.0" prefWidth="809.0" stylesheets="@../Style/css/style.css">
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="Border-Pane" />
+         </styleClass>
+         <top>
+            <Pane prefHeight="46.0" prefWidth="807.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ChoiceBox fx:id="comboBox2" layoutX="206.0" layoutY="8.0" prefHeight="25.0" prefWidth="180.0">
+                     <styleClass>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="settings-button" />
+                     </styleClass>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="comboBox1" layoutX="13.0" layoutY="8.0" prefHeight="25.0" prefWidth="180.0">
+                     <styleClass>
+                        <String fx:value="secondary-color" />
+                        <String fx:value="settings-button" />
+                     </styleClass>
+                  </ChoiceBox>
+                  <Button fx:id="startbtn" layoutX="450.0" layoutY="8.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="25.0" prefWidth="61.0" styleClass="settings-button" text="Start" />
+                  <Button fx:id="cancelBtn" layoutX="533.0" layoutY="8.0" mnemonicParsing="false" onAction="#onPauseButtonClick" prefHeight="25.0" prefWidth="61.0" styleClass="settings-button" text="Pause" />
+                  <Button fx:id="stopBtn" layoutX="616.0" layoutY="8.0" mnemonicParsing="false" onAction="#onStopButtonClick" prefHeight="25.0" prefWidth="61.0" styleClass="settings-button" text="Stop" />
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="35.0" prefWidth="807.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ProgressBar fx:id="progressBar" layoutX="30.0" layoutY="10.0" prefWidth="112.0" progress="0.0" styleClass="settings-button" />
+                  <Label layoutX="150.0" layoutY="6.0" prefHeight="27.0" prefWidth="55.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusLabel" layoutX="200.0" layoutY="6.0" prefHeight="27.0" prefWidth="578.0" text="Pending ..." textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </bottom>
+         <center>
+            <TableView fx:id="table" prefHeight="315.0" prefWidth="776.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="threadNumber" prefWidth="96.79999369382858" text="ThreadNumber" />
+                  <TableColumn fx:id="logId" minWidth="2.399993896484375" prefWidth="60.79998779296875" text="LogId" />
+                  <TableColumn fx:id="lineId" prefWidth="76.79998779296875" text="LineID" />
+                  <TableColumn fx:id="logTime" prefWidth="168.80001831054688" text="LogTime" />
+                  <TableColumn fx:id="loggedValue" prefWidth="103.20001220703125" text="LoggedValue" />
+                  <TableColumn fx:id="cmdType" prefWidth="78.39996337890625" text="CmdType" />
+                  <TableColumn fx:id="description" minWidth="0.0" prefWidth="119.99993896484375" text="Description" />
+                  <TableColumn fx:id="unitType" minWidth="0.0" prefWidth="86.4000244140625" text="UnitType" />
+               </columns>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
+      <Button fx:id="btnHide" layoutX="748.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnExit" layoutX="778.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#handleButtonClicked" prefHeight="25.0" prefWidth="30.0" textFill="#7b7b7b">
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/icons/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="base-color" />
+            <String fx:value="selected2" />
+         </styleClass>
+      </Button>
+   </children>
+</AnchorPane>

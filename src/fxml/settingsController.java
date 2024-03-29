@@ -29,7 +29,7 @@ public class settingsController {
     private Button btnExit;
 
     @FXML
-    private void handleButtonClicked(MouseEvent event){
+    private void handleButtonClicked(MouseEvent event) {
         if(event.getSource().equals(btnExit)){
             System.exit(0);
         } else if (event.getSource().equals(btnHide)) {
@@ -39,7 +39,7 @@ public class settingsController {
     }
 
     @FXML
-    void handleButtonClicked(ActionEvent event) throws SQLException {
+    void handleLogoutClicked(ActionEvent event) throws SQLException {
         if (event.getSource().equals(Logout)) {
             try{
                     Parent loginRoot = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
