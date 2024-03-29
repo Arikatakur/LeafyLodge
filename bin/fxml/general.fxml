@@ -16,9 +16,9 @@
    <children>
       <BorderPane fx:id="mainLayout" prefHeight="400.0" prefWidth="1000.0" styleClass="Border-Pane" stylesheets="@../Style/css/style.css">
          <left>
-            <VBox prefHeight="396.0" prefWidth="190.0" style="-fx-background-color: #2b2b2b;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="392.0" prefWidth="190.0" style="-fx-background-color: #2b2b2b;" styleClass="Border-Pane" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="402.0" prefWidth="190.0">
+                  <Pane prefHeight="391.0" prefWidth="190.0">
                      <children>
                         <VBox alignment="CENTER" layoutY="14.0" prefHeight="114.0" prefWidth="190.0" spacing="5.0">
                            <children>
